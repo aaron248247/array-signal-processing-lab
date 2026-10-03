@@ -15,7 +15,7 @@ from .steering import steering_vector
 def conventional_weights(ula: ULA, theta0: float) -> np.ndarray:
     """Delay-and-sum weights ``w = a(theta0) / N``.
 
-    Normalised so that ``w^H a(theta0) = 1`` (unit gain toward the look
+    Normalized so that ``w^H a(theta0) = 1`` (unit gain toward the look
     direction). Then ``||w||^2 = 1/N`` and the white-noise array gain is ``N``.
     """
     return steering_vector(ula, theta0) / ula.n_elements
@@ -69,9 +69,9 @@ def mvdr_weights(
 ) -> np.ndarray:
     """MVDR / Capon weights ``w = R_l^{-1} a0 / (a0^H R_l^{-1} a0)``, ``R_l = R + loading I``.
 
-    Minimises ``w^H R w`` subject to ``w^H a0 = 1`` [Capon 1969].
+    Minimizes ``w^H R w`` subject to ``w^H a0 = 1`` [Capon 1969].
 
-    Implementation: Cholesky factorisation of ``R_l`` and two triangular solves
+    Implementation: Cholesky factorization of ``R_l`` and two triangular solves
     (no explicit inverse). If ``R_l`` is not positive definite, or its reciprocal
     condition number ``lambda_min / lambda_max`` is below ``rcond_min``, a
     :class:`SingularCovarianceError` is raised instead of returning weights

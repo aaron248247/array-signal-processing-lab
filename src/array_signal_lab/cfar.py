@@ -125,7 +125,7 @@ def ca_cfar_1d(z: np.ndarray, n_train: int, n_guard: int, pfa: float, edge: str 
 
 # --------------------------------------------------------------------------- 2-D CA-CFAR
 def _box_sum(a: np.ndarray, hk: int, hl: int) -> np.ndarray:
-    """Sum over the (2hk+1) x (2hl+1) box centred on each interior cell of a padded array."""
+    """Sum over the (2hk+1) x (2hl+1) box centered on each interior cell of a padded array."""
     cs = np.pad(a, ((1, 0), (1, 0))).cumsum(0).cumsum(1)
     K, L = a.shape
     k = np.arange(hk, K - hk)[:, None]
@@ -166,7 +166,7 @@ def ca_cfar_2d(
     vp = np.pad(vp, ((0, 0), (rl, rl)))
     outer = _box_sum(zp, rk, rl)
     outer_c = _box_sum(vp, rk, rl)
-    # guard box: crop the padded arrays so the guard box is centred on the same cells
+    # guard box: crop the padded arrays so the guard box is centered on the same cells
     zg = zp[rk - gk: zp.shape[0] - (rk - gk), rl - gl: zp.shape[1] - (rl - gl)]
     vg = vp[rk - gk: vp.shape[0] - (rk - gk), rl - gl: vp.shape[1] - (rl - gl)]
     inner = _box_sum(zg, gk, gl)

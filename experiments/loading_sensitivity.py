@@ -1,7 +1,7 @@
 """Part C - diagonal-loading sensitivity of the SMI/MVDR beamformer.
 
 Loading ``R_hat + delta I`` is swept over ``delta / sigma^2`` = -30 ... +60 dB
-for the baseline scenario. Expected limiting behaviour:
+for the baseline scenario. Expected limiting behavior:
 
 * ``delta -> 0``: unloaded SMI (RMB loss for signal-free training).
 * ``delta >> lambda_max(R)``: weights -> conventional ``a_s / N``; the jammers

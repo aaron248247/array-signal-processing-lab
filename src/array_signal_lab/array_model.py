@@ -28,9 +28,9 @@ class ULA:
     spacing_wavelengths : float
         Element spacing ``d / lambda``. Default 0.5 (half-wavelength).
     wavelength : float
-        Carrier wavelength ``lambda`` in metres. Only the ratio ``d/lambda``
+        Carrier wavelength ``lambda`` in meters. Only the ratio ``d/lambda``
         enters the narrowband steering vector; the absolute value is kept so
-        that positions can be reported in metres.
+        that positions can be reported in meters.
     """
 
     n_elements: int = 16
@@ -47,7 +47,7 @@ class ULA:
 
     @property
     def spacing(self) -> float:
-        """Element spacing ``d`` in metres."""
+        """Element spacing ``d`` in meters."""
         return self.spacing_wavelengths * self.wavelength
 
     @property
@@ -57,12 +57,12 @@ class ULA:
 
     @property
     def positions(self) -> np.ndarray:
-        """Element x-coordinates ``x_n = n d`` in metres, shape ``(N,)``."""
+        """Element x-coordinates ``x_n = n d`` in meters, shape ``(N,)``."""
         return element_positions(self.n_elements, self.spacing)
 
     @property
     def aperture(self) -> float:
-        """Physical aperture ``(N-1) d`` in metres."""
+        """Physical aperture ``(N-1) d`` in meters."""
         return (self.n_elements - 1) * self.spacing
 
     def has_grating_lobes(self, scan_max: float = np.pi / 2) -> bool:

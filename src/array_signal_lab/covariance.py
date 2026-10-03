@@ -67,7 +67,7 @@ def theoretical_covariance(
 
 
 def sample_covariance(X: np.ndarray) -> np.ndarray:
-    """Sample covariance ``(1/K) X X^H``, symmetrised to be exactly Hermitian."""
+    """Sample covariance ``(1/K) X X^H``, symmetrized to be exactly Hermitian."""
     if X.ndim != 2:
         raise ValueError("X must have shape (N, K)")
     k = X.shape[1]

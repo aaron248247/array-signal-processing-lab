@@ -130,7 +130,7 @@ def run():
 
     metrics = {
         "processing": out,
-        # array gain x pulse-compression gain x Hann coherent gain, thermal noise only, grid-centred target
+        # array gain x pulse-compression gain x Hann coherent gain, thermal noise only, grid-centered target
         "expected_post_processing_snr_db_target1_noise_only": float(
             TARGETS[0].snr_db + db(N) + db(P.n_pulse_samples) + db(coherent_gain("hann", P.n_pulses))),
     }

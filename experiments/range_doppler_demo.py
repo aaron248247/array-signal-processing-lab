@@ -11,7 +11,7 @@ Questions
 3. Is the post-compression SNR gain equal to the pulse length in samples?
 4. Is the Doppler-induced LFM delay shift equal to -f_D T / B?
 5. Are injected ranges and velocities recovered in a noisy range-Doppler map?
-6. How large are the grid-quantisation (binning) errors and straddle/scalloping
+6. How large are the grid-quantization (binning) errors and straddle/scalloping
    losses, and how much does interpolation or zero padding recover?
 
 Produces figures 7, 8 and 9.

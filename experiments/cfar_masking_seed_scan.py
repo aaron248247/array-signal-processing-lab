@@ -1,11 +1,11 @@
 """Seed scan behind the Figure 10 CFAR masking geometry (reproducibility record).
 
-Figure 10 (``cfar_false_alarm_check.py``) shows one realisation of a weak target
-masked by a stronger neighbour in the same Doppler bin. The geometry used there
+Figure 10 (``cfar_false_alarm_check.py``) shows one realization of a weak target
+masked by a stronger neighbor in the same Doppler bin. The geometry used there
 (weak target -15 dB at 4321.7 m, masker -10 dB nine range cells further out,
 both at 101.3 m/s) was chosen with a small scan over 20 noise seeds. That scan
 was originally run as a throw-away script outside the repository. This file
-reproduces it exactly and saves every realisation.
+reproduces it exactly and saves every realization.
 
 Scan definition (as originally run; nothing here was re-tuned):
 
@@ -14,13 +14,13 @@ Scan definition (as originally run; nothing here was re-tuned):
   masker phase 1.0 rad; both targets at 101.3 m/s;
 * only these two targets are simulated. Figure 10 additionally contains a third,
   far-away target (9007.4 m, outside every CFAR window around the weak target);
-* seeds 0..19, each realisation drawn with ``numpy.random.default_rng(seed)``;
+* seeds 0..19, each realization drawn with ``numpy.random.default_rng(seed)``;
 * processing as in Figure 10: LFM matched filter, Hann slow-time window,
   range cut at the Doppler bin nearest 101.3 m/s;
 * CA-CFAR 8 training + 2 guard cells per side (N_t = 16), ``edge="valid"``;
   OS-CFAR same window, k = 12 of 16; P_FA = 1e-4;
 * "detected" = any detection in the weak-target lag l0 = 288 or its two
-  neighbours (l0 - 1 .. l0 + 1), the same criterion used for Figure 10.
+  neighbors (l0 - 1 .. l0 + 1), the same criterion used for Figure 10.
 
 The selected geometry is (offset 9 cells, masker -10 dB).
 

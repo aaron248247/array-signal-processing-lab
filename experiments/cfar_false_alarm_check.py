@@ -5,8 +5,8 @@
 2. i.i.d. exponential noise (figure 11a): measured vs requested P_FA for
    CA-CFAR (N_t = 16, 32) and OS-CFAR (N_t = 16, k = 12).
 3. Noise that has passed through the actual processing chain (figure 11b):
-   matched filtering at f_s = 2B correlates neighbouring range cells, and a
-   Hann slow-time window correlates neighbouring Doppler cells. The CA-CFAR
+   matched filtering at f_s = 2B correlates neighboring range cells, and a
+   Hann slow-time window correlates neighboring Doppler cells. The CA-CFAR
    threshold formula assumes independent training cells; the effect of the
    correlation on P_FA is measured and compared with a moment-matching
    prediction based on an effective number of independent training cells.

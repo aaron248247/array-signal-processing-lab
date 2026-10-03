@@ -39,7 +39,7 @@ def smi_trials(sc, k, n_trials, rng, signal_in_training=False, loading=0.0, a_lo
                th_s_true=None, extra=None):
     """Monte Carlo over independent training sets.
 
-    Returns an array of normalised SINR ``rho = SINR(w_hat)/SINR_opt`` (NaN where the
+    Returns an array of normalized SINR ``rho = SINR(w_hat)/SINR_opt`` (NaN where the
     unloaded covariance was singular) and the fraction of singular trials.
 
     ``a_look``: steering vector used in the MVDR constraint (default: true target).

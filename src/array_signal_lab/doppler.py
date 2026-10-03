@@ -8,8 +8,8 @@ then ``fftshift``-ed so the Doppler axis runs ``[-PRF/2, PRF/2)``. With the
 ``exp(+j 2 pi f_D t_m)`` echo convention of :mod:`radar_signal`, a closing
 target (``f_D > 0``) appears at a positive Doppler frequency.
 
-Window normalisation: ``g`` is scaled to ``sum g^2 = 1`` so white noise keeps
-its per-cell variance; the coherent gain for a bin-centred target is then
+Window normalization: ``g`` is scaled to ``sum g^2 = 1`` so white noise keeps
+its per-cell variance; the coherent gain for a bin-centered target is then
 ``(sum g)^2 / sum g^2`` (``= M`` for the rectangular window).
 """
 
@@ -52,7 +52,7 @@ def doppler_axis(prf_hz: float, nfft: int) -> np.ndarray:
 
 
 def scalloping_loss_db(win: str, m: int, offset_bins: float) -> float:
-    """Exact loss (dB, negative) of a tone ``offset_bins`` from a bin centre relative to bin-centred."""
+    """Exact loss (dB, negative) of a tone ``offset_bins`` from a bin center relative to bin-centered."""
     g = window(win, m)
     n = np.arange(m)
     centred = np.abs(np.sum(g))

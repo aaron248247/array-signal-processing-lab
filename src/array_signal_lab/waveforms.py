@@ -46,7 +46,7 @@ def rect_pulse(duration: float, fs: float) -> np.ndarray:
 
 
 def lfm_autocorrelation_magnitude(tau, bandwidth: float, duration: float) -> np.ndarray:
-    """Normalised ``|chi(tau, 0)| / T`` of the continuous LFM pulse (peak = 1)."""
+    """Normalized ``|chi(tau, 0)| / T`` of the continuous LFM pulse (peak = 1)."""
     tau = np.asarray(tau, dtype=float)
     r = 1.0 - np.abs(tau) / duration
     out = np.where(np.abs(tau) < duration, np.abs(r * np.sinc(bandwidth * tau * r)), 0.0)

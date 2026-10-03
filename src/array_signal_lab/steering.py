@@ -6,7 +6,7 @@ For a plane wave from angle ``theta`` (measured from broadside)
 
     a_n(theta) = exp(j k x_n sin(theta)),   x_n = n d,   n = 0..N-1.
 
-``a`` is *not* normalised: ``a^H a = N``.
+``a`` is *not* normalized: ``a^H a = N``.
 
 Array factor
 ------------
@@ -59,7 +59,7 @@ def spatial_phase(ula: ULA, theta, theta0: float = 0.0) -> np.ndarray:
 def array_factor_analytical(ula: ULA, theta, theta0: float = 0.0) -> np.ndarray:
     """Closed-form complex array factor of the uniformly weighted ULA steered to ``theta0``.
 
-    Normalised so that ``AF(theta0) = 1``. The removable singularity at
+    Normalized so that ``AF(theta0) = 1``. The removable singularity at
     ``sin(psi/2) = 0`` (main lobe and grating lobes) is evaluated as its limit,
     ``exp(j (N-1) psi / 2) * (+/-1)``.
     """

@@ -9,8 +9,8 @@ import matplotlib.pyplot as plt  # noqa: E402
 
 from array_signal_lab.io import FIGURES_DIR  # noqa: E402
 
-# Fixed categorical order (validated colour-blind-separable set); line styles add a
-# second encoding so no curve is identified by colour alone.
+# Fixed categorical order (validated color-blind-separable set); line styles add a
+# second encoding so no curve is identified by color alone.
 C = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300", "#4a3aa7", "#e34948"]
 INK = "#0b0b0b"
 MUTED = "#52514e"
