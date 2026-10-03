@@ -139,3 +139,19 @@ def test_signal_present_prediction_limits():
         rmb_mean_normalized_sinr(64, 16), rel=1e-6)
     # larger S -> larger loss
     assert smi_signal_present_mean_normalized_sinr(64, 16, 100.0) < smi_signal_present_mean_normalized_sinr(64, 16, 1.0)
+
+
+@pytest.mark.parametrize("delta_deg,snr", [(0.5, 1.0), (1.0, 10.0), (2.5, 0.1)])
+def test_mismatch_closed_forms(delta_deg, snr):
+    from array_signal_lab.metrics import mismatched_mpdr_sinr, mismatched_mvdr_sinr
+    a0 = steering_vector(ULA16, TH_S)
+    th_true = TH_S + np.deg2rad(delta_deg)
+    a_s = steering_vector(ULA16, th_true)
+    R_in = theoretical_covariance(ULA16, [TH_J], [1e3], 1.0)
+    R = R_in + snr * np.outer(a_s, a_s.conj())
+    w_mvdr = mvdr_weights(R_in, a0)
+    w_mpdr = mvdr_weights(R, a0)
+    assert output_sinr(w_mvdr, a_s, snr, R_in) == pytest.approx(mismatched_mvdr_sinr(a0, a_s, snr, R_in), rel=1e-9)
+    assert output_sinr(w_mpdr, a_s, snr, R_in) == pytest.approx(mismatched_mpdr_sinr(a0, a_s, snr, R_in), rel=1e-9)
+    # matched case reduces to the optimum
+    assert mismatched_mpdr_sinr(a_s, a_s, snr, R_in) == pytest.approx(optimal_sinr(a_s, snr, R_in), rel=1e-9)

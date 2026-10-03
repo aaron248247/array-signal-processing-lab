@@ -1,0 +1,144 @@
+{
+  "experiment": "loading_sensitivity",
+  "config": {
+    "N": 16,
+    "jammers_deg": [
+      35.0,
+      -42.0
+    ],
+    "jnr_db": [
+      40.0,
+      30.0
+    ],
+    "snr_db_per_element": 0.0,
+    "lnr_db_grid": [
+      -30.0,
+      -27.5,
+      -25.0,
+      -22.5,
+      -20.0,
+      -17.5,
+      -15.0,
+      -12.5,
+      -10.0,
+      -7.5,
+      -5.0,
+      -2.5,
+      0.0,
+      2.5,
+      5.0,
+      7.5,
+      10.0,
+      12.5,
+      15.0,
+      17.5,
+      20.0,
+      22.5,
+      25.0,
+      27.5,
+      30.0,
+      32.5,
+      35.0,
+      37.5,
+      40.0,
+      42.5,
+      45.0,
+      47.5,
+      50.0,
+      52.5,
+      55.0,
+      57.5,
+      60.0
+    ],
+    "n_trials_per_point": 400,
+    "cases": {
+      "K8_signal_free": {
+        "k": 8,
+        "signal_in_training": false
+      },
+      "K32_signal_free": {
+        "k": 32,
+        "signal_in_training": false
+      },
+      "K32_signal_present": {
+        "k": 32,
+        "signal_in_training": true
+      },
+      "K160_signal_present": {
+        "k": 160,
+        "signal_in_training": true
+      }
+    },
+    "seed": 20261004
+  },
+  "metrics": {
+    "sinr_opt_db": 11.997935352042454,
+    "conventional_rho_db": -29.990096937733107,
+    "eigenvalues_Rin_top2_db": [
+      52.041299650697745,
+      42.04074441792751
+    ],
+    "per_case": {
+      "K8_signal_free": {
+        "best_lnr_db": 12.5,
+        "best_mean_rho_db": -1.0608933183062617,
+        "lnr_range_within_1dB_of_best": [
+          0.0,
+          27.5
+        ],
+        "mean_rho_db_at_lnr_-30": -3.5737158302069623,
+        "mean_rho_db_at_lnr_+60": -28.80139466266343
+      },
+      "K32_signal_free": {
+        "best_lnr_db": 17.5,
+        "best_mean_rho_db": -0.2739753088856046,
+        "lnr_range_within_1dB_of_best": [
+          -5.0,
+          27.5
+        ],
+        "mean_rho_db_at_lnr_-30": -2.639840412822408,
+        "mean_rho_db_at_lnr_+60": -28.78133238094894
+      },
+      "K32_signal_present": {
+        "best_lnr_db": 22.5,
+        "best_mean_rho_db": -2.71062764436979,
+        "lnr_range_within_1dB_of_best": [
+          5.0,
+          30.0
+        ],
+        "mean_rho_db_at_lnr_-30": -11.48797866110919,
+        "mean_rho_db_at_lnr_+60": -28.80167086668033
+      },
+      "K160_signal_present": {
+        "best_lnr_db": 17.5,
+        "best_mean_rho_db": -0.7392567303740128,
+        "lnr_range_within_1dB_of_best": [
+          2.5,
+          30.0
+        ],
+        "mean_rho_db_at_lnr_-30": -4.2375680472483666,
+        "mean_rho_db_at_lnr_+60": -28.795497706531755
+      }
+    },
+    "clairvoyant_rho_db_at_lnr": {
+      "-30.0": -1.5477455838180535e-13,
+      "-20.0": -1.2410556980104834e-10,
+      "-10.0": -1.26399676096322e-08,
+      "+0.0": -1.2642738738852717e-06,
+      "+10.0": -0.00012629943269073583,
+      "+20.0": -0.012486866939004878,
+      "+30.0": -1.0089960111517862,
+      "+40.0": -11.417891054517721,
+      "+50.0": -22.739930372262197,
+      "+60.0": -28.79337622545794
+    }
+  },
+  "elapsed_s": 15.088733564000108,
+  "timestamp_utc": "2026-10-03T06:51:41Z",
+  "environment": {
+    "python": "3.13.16",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "platform": "Linux-6.18.44-fc-v64-x86_64-with-glibc2.39"
+  }
+}

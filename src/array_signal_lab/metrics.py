@@ -104,3 +104,28 @@ def smi_signal_present_mean_normalized_sinr(n_snapshots: int, n_elements: int, s
     s = float(sinr_opt)
     val, _ = integrate.quad(lambda r: r / (1.0 + s * (1.0 - r)) * dist.pdf(r), 0.0, 1.0, limit=200)
     return float(val)
+
+
+def generalized_cos2(a0: np.ndarray, a_s: np.ndarray, R_in: np.ndarray) -> float:
+    """``cos^2(a0, a_s; R_in^{-1}) = |a0^H R^{-1} a_s|^2 / ((a0^H R^{-1} a0)(a_s^H R^{-1} a_s))``."""
+    u0 = np.linalg.solve(R_in, a0)
+    us = np.linalg.solve(R_in, a_s)
+    return float(np.abs(np.vdot(a0, us)) ** 2 / (np.real(np.vdot(a0, u0)) * np.real(np.vdot(a_s, us))))
+
+
+def mismatched_mvdr_sinr(a0, a_s, signal_power, R_in) -> float:
+    """SINR of MVDR built from the *interference-plus-noise* covariance, steered to ``a0``
+    while the target arrives along ``a_s``: ``SINR_opt * cos^2``."""
+    return optimal_sinr(a_s, signal_power, R_in) * generalized_cos2(a0, a_s, R_in)
+
+
+def mismatched_mpdr_sinr(a0, a_s, signal_power, R_in) -> float:
+    """SINR of the minimum-power (MPDR) beamformer ``R^{-1} a0`` with the target *in* ``R``.
+
+    With ``S = SINR_opt`` and ``c2 = cos^2(a0, a_s; R_in^{-1})`` [Cox 1973]:
+
+        SINR = S c2 / (1 + (2 S + S^2)(1 - c2)).
+    """
+    s = optimal_sinr(a_s, signal_power, R_in)
+    c2 = generalized_cos2(a0, a_s, R_in)
+    return float(s * c2 / (1.0 + (2.0 * s + s**2) * (1.0 - c2)))
