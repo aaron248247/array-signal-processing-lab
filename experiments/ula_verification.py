@@ -78,7 +78,7 @@ def run():
     thetas = np.deg2rad(np.linspace(-90.0, 90.0, 180001))  # 0.001 deg grid
     cases = [(16, 0.0), (16, 30.0), (16, -45.0), (8, 0.0), (8, 20.0)]
     rows = []
-    arrays = {"theta_deg": np.rad2deg(thetas)}
+    arrays = {"theta_sub_deg": np.rad2deg(thetas[::10]), "theta_markers_deg": np.rad2deg(thetas[::5000])}
     for n, th0_deg in cases:
         ula = ULA(n_elements=n, spacing_wavelengths=0.5)
         th0 = np.deg2rad(th0_deg)
@@ -104,9 +104,12 @@ def run():
         hpbw = _hpbw(ula, w, fine_peak)
         hpbw_approx = 0.886 / (n * 0.5 * np.cos(th0))  # standard approximation
         key = f"N{n}_th{th0_deg:+.0f}"
-        arrays[f"num_{key}"] = num
-        arrays[f"ana_{key}"] = ana
-        arrays[f"err_{key}"] = err
+        # Stored for plotting (the full 0.001-degree complex arrays are ~30 MB and not needed):
+        # |AF| in dB on a 0.01-degree subgrid, closed form at 5-degree markers, and the
+        # maximum error in each 1-degree bin. All metrics above use the full grid.
+        arrays[f"num_db_{key}"] = (20 * np.log10(np.maximum(np.abs(num[::10]), 1e-12))).astype(np.float32)
+        arrays[f"ana_db_markers_{key}"] = 20 * np.log10(np.maximum(np.abs(ana[::5000]), 1e-12))
+        arrays[f"err_binmax_{key}"] = err[:-1].reshape(180, 1000).max(axis=1)
         arrays[f"nulls_an_{key}"] = np.rad2deg(nulls_an_inner)
         arrays[f"nulls_num_{key}"] = np.rad2deg(nulls_num)
         rows.append({
@@ -178,15 +181,13 @@ def plot():
 
     setup()
     rec, z = load_results(NAME)
-    th = z["theta_deg"]
+    th = z["theta_sub_deg"]
     fig, axes = plt.subplots(1, 3, figsize=(13.5, 3.9))
     ax = axes[0]
     for i, (key, lab) in enumerate([("N16_th+0", r"$\theta_0=0^\circ$"), ("N16_th+30", r"$\theta_0=30^\circ$")]):
-        mag = 20 * np.log10(np.maximum(np.abs(z[f"num_{key}"]), 1e-12))
+        mag = z[f"num_db_{key}"].astype(float)
         ax.plot(th, mag, color=C[i], label=f"numerical, {lab}", lw=1.4)
-        sub = slice(1250 + 625 * i, None, 5000)
-        ana_mag = 20 * np.log10(np.maximum(np.abs(z[f"ana_{key}"][sub]), 1e-12))
-        ax.plot(th[sub], ana_mag, ls="none", marker="o", ms=4, mfc="none", color=C[i],
+        ax.plot(z["theta_markers_deg"], z[f"ana_db_markers_{key}"], ls="none", marker="o", ms=4, mfc="none", color=C[i],
                 label=f"closed form, {lab}")
         nulls = z[f"nulls_an_{key}"]
         ax.plot(nulls, np.full_like(nulls, -60.0 + 3.0 * i), ls="none", marker="^", ms=5,
@@ -203,7 +204,7 @@ def plot():
     ax = axes[1]
     for i, key in enumerate(["N16_th+0", "N16_th+30", "N16_th-45", "N8_th+0"]):
         # maximum error in 1-degree bins (the raw 0.001-degree trace is unreadable)
-        e = z[f"err_{key}"][:-1].reshape(180, 1000).max(axis=1)
+        e = z[f"err_binmax_{key}"]
         centers = np.arange(-89.5, 90, 1.0)
         ax.semilogy(centers, np.maximum(e, 1e-18), color=C[i], lw=1.3,
                     ls=["-", "--", "-.", ":"][i], label=key.replace("_th", r", $\theta_0$=") + "°")
