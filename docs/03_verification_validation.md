@@ -9,7 +9,7 @@ This document records how each component was checked and what the checks showed.
 | **Sensitivity** | Numerical behaviour under a parameter sweep, compared with a known scaling or limit | Trend and limit agree; no pass/fail threshold claimed beyond that |
 | **Exploratory** | Demonstration without an independent reference | No agreement is claimed |
 
-All numbers are read from `results/*.json` produced by `python experiments/run_all.py`. Equation labels refer to [01_theory.md](01_theory.md), references to [06_references.md](06_references.md). The automated tests (`pytest`, 113 tests) cover the exact checks and smaller versions of the statistical ones. The experiments run the larger versions.
+All numbers are read from `results/*.json` produced by `python experiments/run_all.py`. Equation labels refer to [01_theory.md](01_theory.md), references to [06_references.md](06_references.md). The automated tests (`pytest`, 114 tests) cover the exact checks and smaller versions of the statistical ones. The experiments run the larger versions.
 
 ---
 
@@ -236,3 +236,4 @@ These are sweeps rather than pass/fail checks. They are compared with limits and
 | `tests/test_beamforming.py` | 17 | normalisation, MVDR identities, distortionless constraint, closed-form SINR and null depth, jammer suppression, singular guard, RMB, mismatch formulas |
 | `tests/test_radar.py` | 20 | parameters, LFM, FFT vs direct MF, delay recovery, noise variance, closed-form autocorrelation, range/Doppler recovery, Doppler sign, coherent gain, coupling, scalloping, windows, seeds |
 | `tests/test_cfar.py` | 28 | thresholds, edges, brute-force 1-D/2-D/OS, CFAR property, seeds, Monte Carlo $P_{FA}$ (independent and sliding windows), Pd closed forms and limits, Swerling-1 MC, binomial interval |
+| `tests/test_saved_results.py` | 1 | integrity of the stored CFAR masking seed scan (seed list, one row per seed, aggregates consistent with per-seed rows and the NPZ) |

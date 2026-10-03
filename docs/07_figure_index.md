@@ -145,7 +145,7 @@ Figures are numbered continuously in the order in which they appear in [04_resul
 
 * **Quantities.** Power and thresholds in dB relative to the noise floor vs range.
 * **What to notice.** At the weak target the strong neighbour raises the CA threshold to 27.6 dB above noise, against 19.5 dB for OS-CFAR and a cell power of 22.0 dB. CA-CFAR therefore misses the weak target and OS-CFAR detects it. The CA threshold has a flat-topped "shoulder" wherever a strong target falls inside the training window. One noise cell near 6.5 km is a false alarm for both detectors.
-* **Caveats.** This is a single realisation chosen to show the masking mechanism. The separation and amplitudes were selected after a 20-seed scan in which, for this geometry, CA detected the weak target in 0/20 and OS in 20/20 realisations. That scan is not part of the saved results.
+* **Caveats.** This is a single realisation chosen to show the masking mechanism. The separation and amplitudes were selected from a 20-seed scan over six candidate geometries: masker offset of 5, 7 or 9 cells, and masker SNR of −5 or −10 dB. That scan is saved in `results/cfar_masking_seed_scan.json` (per-seed outcomes and thresholds) and can be regenerated with `python experiments/cfar_masking_seed_scan.py` (seeds 0–19). For the selected geometry, CA-CFAR detected the weak target in 0/20 realisations and OS-CFAR in 20/20. For the other five candidates OS-CFAR detected it in 0, 12, 0, 1 and 2 of 20, and CA in none. The scan simulates only the two nearby targets. The panel shown here also contains a distant third target and uses a different random draw.
 
 ## Figure 11 — Measured versus requested false-alarm probability
 

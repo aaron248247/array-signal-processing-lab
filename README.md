@@ -103,7 +103,7 @@ python -m pip install -e ".[test]"     # numpy, scipy, matplotlib, pytest
 ## Reproduction
 
 ```bash
-python -m pytest                          # 113 tests, a few seconds
+python -m pytest                          # 114 tests, a few seconds
 python experiments/run_all.py             # all results and figures (~2 min on 2 cores)
 python experiments/run_all.py --plot-only # redraw figures from saved results
 python experiments/cfar_pd_snr.py         # any single experiment
