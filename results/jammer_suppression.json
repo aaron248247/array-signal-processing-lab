@@ -1,0 +1,153 @@
+{
+  "experiment": "jammer_suppression",
+  "config": {
+    "N": 16,
+    "d_over_lambda": 0.5,
+    "theta_s_deg": 0.0,
+    "snr_db_per_element": 0.0,
+    "jammers_deg": [
+      35.0,
+      -42.0
+    ],
+    "jnr_db_per_element": [
+      40.0,
+      30.0
+    ],
+    "noise_power": 1.0,
+    "n_trials": 2000,
+    "seed": 20261002,
+    "smi_cases": [
+      {
+        "name": "smi_K32_signal_free",
+        "K": 32,
+        "signal_in_training": false,
+        "loading_db": 0.0
+      },
+      {
+        "name": "smi_K160_signal_free",
+        "K": 160,
+        "signal_in_training": false,
+        "loading_db": 0.0
+      },
+      {
+        "name": "smi_K160_signal_present",
+        "K": 160,
+        "signal_in_training": true,
+        "loading_db": 0.0
+      },
+      {
+        "name": "smi_K32_loaded_10dB",
+        "K": 32,
+        "signal_in_training": false,
+        "loading_db": 10.0
+      }
+    ]
+  },
+  "metrics": {
+    "sinr_opt_db": 11.997935352042454,
+    "snr_array_db_no_jammer": 12.041199826559248,
+    "deterministic": {
+      "conventional": {
+        "target_gain_db": 0.0,
+        "jammer_rel_db": [
+          -22.3089522457228,
+          -23.812881298632867
+        ],
+        "sinr_db": -17.992161585690653,
+        "sinr_loss_db": -29.990096937733107,
+        "wng_db": 12.041199826559248
+      },
+      "mvdr_clairvoyant_Rin": {
+        "target_gain_db": -1.9286549331065743e-15,
+        "jammer_rel_db": [
+          -126.39368200386593,
+          -107.93567231522002
+        ],
+        "sinr_db": 11.997935352045843,
+        "sinr_loss_db": 3.388646717466929e-12,
+        "wng_db": 11.997936616534048
+      },
+      "mvdr_clairvoyant_Rfull": {
+        "target_gain_db": 0.0,
+        "jammer_rel_db": [
+          -126.39368200352258,
+          -107.93567231530965
+        ],
+        "sinr_db": 11.997935352046902,
+        "sinr_loss_db": 4.448442603208035e-12,
+        "wng_db": 11.997936616534048
+      },
+      "max_abs_diff_w_Rin_vs_Rfull": 4.580999199823997e-13
+    },
+    "monte_carlo": {
+      "smi_K32_signal_free": {
+        "K": 32,
+        "signal_in_training": false,
+        "loading_db_rel_noise": null,
+        "rho_mean": 0.5425983110476773,
+        "rho_mean_stderr": 0.0019332453192090922,
+        "rho_mean_db": -2.6552156240600313,
+        "rho_p05_db": -3.991535274279115,
+        "rho_p95_db": -1.645040736484273,
+        "rmb_mean_prediction": 0.5454545454545454,
+        "signal_present_mean_prediction": null,
+        "jammer1_rel_db_median": -66.1727508417089,
+        "jammer2_rel_db_median": -56.39546694661324,
+        "target_gain_db_max_abs": 3.857309866213148e-15
+      },
+      "smi_K160_signal_free": {
+        "K": 160,
+        "signal_in_training": false,
+        "loading_db_rel_noise": null,
+        "rho_mean": 0.9071883165251418,
+        "rho_mean_stderr": 0.000515638422231023,
+        "rho_mean_db": -0.42302551596378235,
+        "rho_p05_db": -0.6241000318254831,
+        "rho_p95_db": -0.2612031837727728,
+        "rmb_mean_prediction": 0.906832298136646,
+        "signal_present_mean_prediction": null,
+        "jammer1_rel_db_median": -75.33787560048845,
+        "jammer2_rel_db_median": -65.08385248624036,
+        "target_gain_db_max_abs": 3.857309866213148e-15
+      },
+      "smi_K160_signal_present": {
+        "K": 160,
+        "signal_in_training": true,
+        "loading_db_rel_noise": null,
+        "rho_mean": 0.37745568003216595,
+        "rho_mean_stderr": 0.0014694111603622115,
+        "rho_mean_db": -4.231340348889574,
+        "rho_p05_db": -5.5847742583743445,
+        "rho_p95_db": -3.0494936922638596,
+        "rmb_mean_prediction": null,
+        "signal_present_mean_prediction": 0.3754185831966221,
+        "jammer1_rel_db_median": -62.90741435682476,
+        "jammer2_rel_db_median": -53.20499292611482,
+        "target_gain_db_max_abs": 3.857309866213149e-15
+      },
+      "smi_K32_loaded_10dB": {
+        "K": 32,
+        "signal_in_training": false,
+        "loading_db_rel_noise": 10.0,
+        "rho_mean": 0.9350796895271619,
+        "rho_mean_stderr": 0.0009350249830541665,
+        "rho_mean_db": -0.2915137602892106,
+        "rho_p05_db": -0.6712878699394589,
+        "rho_p95_db": -0.06381351662042438,
+        "rmb_mean_prediction": null,
+        "signal_present_mean_prediction": null,
+        "jammer1_rel_db_median": -68.22257102772625,
+        "jammer2_rel_db_median": -58.311591774179604,
+        "target_gain_db_max_abs": 3.857309866213148e-15
+      }
+    }
+  },
+  "elapsed_s": 2.410920185000009,
+  "timestamp_utc": "2026-10-03T06:48:16Z",
+  "environment": {
+    "python": "3.13.16",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "platform": "Linux-6.18.44-fc-v64-x86_64-with-glibc2.39"
+  }
+}

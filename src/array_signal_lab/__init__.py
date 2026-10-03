@@ -12,7 +12,22 @@ from .steering import (
     spatial_phase,
     steering_vector,
 )
-from .beamforming import angle_scan, beampattern_db, conventional_weights, response
+from .beamforming import (
+    SingularCovarianceError,
+    angle_scan,
+    beampattern_db,
+    conventional_weights,
+    mvdr_weights,
+    response,
+)
+from .covariance import (
+    complex_gaussian,
+    condition_number,
+    diagonal_load,
+    sample_covariance,
+    simulate_snapshots,
+    theoretical_covariance,
+)
 
 __all__ = [
     "ULA",
@@ -26,6 +41,14 @@ __all__ = [
     "response",
     "beampattern_db",
     "angle_scan",
+    "mvdr_weights",
+    "SingularCovarianceError",
+    "complex_gaussian",
+    "simulate_snapshots",
+    "theoretical_covariance",
+    "sample_covariance",
+    "diagonal_load",
+    "condition_number",
 ]
 
 __version__ = "0.1.0"
