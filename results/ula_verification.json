@@ -1,0 +1,132 @@
+{
+  "experiment": "ula_verification",
+  "config": {
+    "angle_grid_deg": [
+      -90.0,
+      90.0,
+      180001
+    ],
+    "cases_N_theta0deg": [
+      [
+        16,
+        0.0
+      ],
+      [
+        16,
+        30.0
+      ],
+      [
+        16,
+        -45.0
+      ],
+      [
+        8,
+        0.0
+      ],
+      [
+        8,
+        20.0
+      ]
+    ],
+    "spacing_wavelengths": 0.5,
+    "beam_scan_snapshots": 4096,
+    "beam_scan_source_deg": 30.0,
+    "seed": 20261001
+  },
+  "metrics": {
+    "cases": [
+      {
+        "case": "N16_th+0",
+        "N": 16,
+        "theta0_deg": 0.0,
+        "max_abs_af_error": 1.4709039198170136e-15,
+        "peak_grid_deg": 0.0,
+        "peak_refined_deg": 6.279989298299582e-11,
+        "peak_error_deg": 6.279989298299582e-11,
+        "n_interior_nulls": 14,
+        "max_null_location_error_deg": 1.0813885916975958e-13,
+        "max_abs_af_at_analytical_nulls": 3.829041892462603e-16,
+        "peak_sidelobe_db": -13.14683059710196,
+        "hpbw_deg": 6.358725780160171,
+        "hpbw_approx_0p886_deg": 6.345507581073868,
+        "fnbw_deg": 14.361511562916563
+      },
+      {
+        "case": "N16_th+30",
+        "N": 16,
+        "theta0_deg": 30.0,
+        "max_abs_af_error": 1.8108386100263924e-15,
+        "peak_grid_deg": 29.999999999999996,
+        "peak_refined_deg": 30.000000028078812,
+        "peak_error_deg": 2.807881216426722e-08,
+        "n_interior_nulls": 14,
+        "max_null_location_error_deg": 1.2722218725854067e-13,
+        "max_abs_af_at_analytical_nulls": 7.895718756442044e-16,
+        "peak_sidelobe_db": -13.146830566300402,
+        "hpbw_deg": 7.348741881144466,
+        "hpbw_approx_0p886_deg": 7.327161020155616,
+        "fnbw_deg": 16.65787461644728
+      },
+      {
+        "case": "N16_th-45",
+        "N": 16,
+        "theta0_deg": -45.0,
+        "max_abs_af_error": 2.091866493503407e-15,
+        "peak_grid_deg": -45.0,
+        "peak_refined_deg": -45.0000000486375,
+        "peak_error_deg": 4.863750291406177e-08,
+        "n_interior_nulls": 15,
+        "max_null_location_error_deg": 8.22968523828685e-14,
+        "max_abs_af_at_analytical_nulls": 7.489265552217555e-16,
+        "peak_sidelobe_db": -13.146830573556187,
+        "hpbw_deg": 9.02543578594921,
+        "hpbw_approx_0p886_deg": 8.973902881295954,
+        "fnbw_deg": 20.71690828772614
+      },
+      {
+        "case": "N8_th+0",
+        "N": 8,
+        "theta0_deg": 0.0,
+        "max_abs_af_error": 7.66300228398549e-16,
+        "peak_grid_deg": 0.0,
+        "peak_refined_deg": 5.097462920558151e-08,
+        "peak_error_deg": 5.097462920558151e-08,
+        "n_interior_nulls": 6,
+        "max_null_location_error_deg": 6.3611093629270335e-15,
+        "max_abs_af_at_analytical_nulls": 1.1443916996305594e-16,
+        "peak_sidelobe_db": -12.797347839217325,
+        "hpbw_deg": 12.802525796993505,
+        "hpbw_approx_0p886_deg": 12.691015162147735,
+        "fnbw_deg": 28.95502437185985
+      },
+      {
+        "case": "N8_th+20",
+        "N": 8,
+        "theta0_deg": 20.0,
+        "max_abs_af_error": 1.0868399068590098e-15,
+        "peak_grid_deg": 20.0,
+        "peak_refined_deg": 20.000000017698962,
+        "peak_error_deg": 1.7698962295753518e-08,
+        "n_interior_nulls": 7,
+        "max_null_location_error_deg": 1.3994440598439473e-13,
+        "max_abs_af_at_analytical_nulls": 3.663841114510704e-16,
+        "peak_sidelobe_db": -12.797347819854298,
+        "hpbw_deg": 13.640932669960339,
+        "hpbw_approx_0p886_deg": 13.505496245712402,
+        "fnbw_deg": 31.020659982516374
+      }
+    ],
+    "beam_scan_vs_af2_max_rel_error": 6.752968110443585e-16,
+    "grating_lobe_d1_theta20_pred_deg": -41.14598655864085,
+    "grating_lobe_d1_theta20_abs_response": 1.0,
+    "psl_large_N_limit_db": -13.261458884048285
+  },
+  "elapsed_s": 0.7636650169999939,
+  "timestamp_utc": "2026-10-03T06:44:05Z",
+  "environment": {
+    "python": "3.13.16",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "platform": "Linux-6.18.44-fc-v64-x86_64-with-glibc2.39"
+  }
+}
