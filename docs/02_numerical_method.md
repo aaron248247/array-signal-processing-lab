@@ -1,6 +1,6 @@
 # 2. Numerical method
 
-This document describes how the models of [01_theory.md](01_theory.md) are discretised and computed, and which numerical issues affect the results. Module names refer to `src/array_signal_lab/`.
+This document describes how the models of [01_theory.md](01_theory.md) are discretized and computed, and which numerical issues affect the results. Module names refer to `src/array_signal_lab/`.
 
 ## 2.1 Data model and indexing
 
@@ -20,38 +20,50 @@ All signals are complex baseband. Complex Gaussian samples are generated as `sqr
 ## 2.2 Array computations
 
 * **Array factor.** The numerical array factor is the matrix product $\mathbf w^H \mathbf A$, where $\mathbf A$ stacks steering vectors over the angle grid. The closed form (A.3) is evaluated separately. Where $\sin(\psi/2)=0$ (main and grating lobes) the removable singularity is replaced by its limit $\cos(Nm\pi)/\cos(m\pi)$.
-* **Peak and null location.** The main-lobe peak is found on a $0.001^\circ$ grid and refined by bounded scalar minimisation of $-|AF|$. Null locations are refined with Brent's method on the real amplitude $\Re\{AF\,e^{-j(N-1)\psi/2}\}$, which changes sign through each null. Locating a minimum of $|AF|$ directly would be less precise.
+* **Peak and null location.** The main-lobe peak is found on a $0.001^\circ$ grid and refined by bounded scalar minimization of $-|AF|$. Null locations are refined with Brent's method on the real amplitude $\Re\{AF\,e^{-j(N-1)\psi/2}\}$, which changes sign through each null. Locating a minimum of $|AF|$ directly would be less precise.
 * **Half-power beamwidth** comes from root-finding $|AF|^2 = 1/2$ on each side of the peak.
 
 **Precision limit of peak location.** $|AF|$ is quadratic near its maximum, so a relative amplitude change of $\epsilon_{\rm mach}\approx10^{-16}$ corresponds to an angular uncertainty of order $\sqrt{\epsilon_{\rm mach}}$ times the beamwidth, i.e. $\sim10^{-8}$ rad. The peak-location errors reported in §3 ($\le 5\times10^{-8}$ deg) are at this floor. Nulls are simple zeros of a sign-changing function and are located to $\sim10^{-13}$ deg.
 
 ## 2.3 Covariance estimation and linear algebra
 
-* **Sample covariance** $\hat{\mathbf R} = \mathbf X\mathbf X^H/K$, symmetrised as $(\hat{\mathbf R}+\hat{\mathbf R}^H)/2$ so that it is exactly Hermitian in floating point.
-* **MVDR weights** (B.6) use a Cholesky factorisation of $\mathbf R + \delta\mathbf I$ followed by two triangular solves (`scipy.linalg.cho_factor/cho_solve`). The inverse is never formed. The weights are normalised by $\mathbf a_0^H\mathbf R^{-1}\mathbf a_0$, so the distortionless constraint holds to rounding error ($|\mathbf w^H\mathbf a_0 - 1| < 10^{-10}$ in the tests, typically $10^{-15}$).
-* **Singularity guard.** Before factorising, the eigenvalues of the loaded matrix are computed (cheap for $N = 16$). If $\lambda_{\min}\le 0$ or $\lambda_{\min}/\lambda_{\max} < 10^{-12}$, a `SingularCovarianceError` is raised. Weights dominated by round-off are never returned. Unloaded SMI with $K<N$ always triggers this, as it should, and the experiments record it as "undefined" rather than substituting a pseudo-inverse.
+* **Sample covariance** $\hat{\mathbf R} = \mathbf X\mathbf X^H/K$ (the sample-matrix-inversion estimate [1, 4]), symmetrized as $(\hat{\mathbf R}+\hat{\mathbf R}^H)/2$ so that it is exactly Hermitian in floating point.
+* **MVDR weights** (B.6) use a Cholesky factorization of $\mathbf R + \delta\mathbf I$ followed by two triangular solves (`scipy.linalg.cho_factor/cho_solve`). The inverse is never formed. The weights are normalized by $\mathbf a_0^H\mathbf R^{-1}\mathbf a_0$, so the distortionless constraint holds to rounding error ($|\mathbf w^H\mathbf a_0 - 1| < 10^{-10}$ in the tests, typically $10^{-15}$).
+* **Singularity guard.** Before factorizing, the eigenvalues of the loaded matrix are computed (cheap for $N = 16$). If $\lambda_{\min}\le 0$ or $\lambda_{\min}/\lambda_{\max} < 10^{-12}$, a `SingularCovarianceError` is raised. Weights dominated by round-off are never returned. Unloaded SMI with $K<N$ always triggers this, as it should, and the experiments record it as "undefined" rather than substituting a pseudo-inverse.
 * **Conditioning.** The true covariance of the baseline scenario has $\mathrm{cond}(\mathbf R_{in}) = 1.6\times10^5$ (largest eigenvalue $1 + N\cdot\mathrm{JNR} \approx 1.6\times10^5$ for the 40 dB jammer, smallest $\sigma^2 = 1$). The sample covariance is worse: median $5.4\times10^7$ at $K = N$, decreasing toward the true value as $K$ grows (Figure 3b). Double precision leaves at least 8 significant digits at the worst condition number encountered, and the distortionless constraint and the clairvoyant closed forms are reproduced to $10^{-9}$ relative or better.
-* **Diagonal loading** is specified relative to the per-element noise power, $\delta/\sigma^2$ in dB ("LNR").
+* **Diagonal loading** [5, 7] is specified relative to the per-element noise power, $\delta/\sigma^2$ in dB ("LNR").
 
-## 2.4 Waveform, delay and Doppler discretisation
+![Figure 3 — finite-snapshot SINR and sample-covariance conditioning](../figures/fig03_sinr_vs_snapshots.png)
+
+*Figure 3.* Panel (b) is the conditioning result quoted above: the median $\mathrm{cond}(\hat{\mathbf R})$ is far above $\mathrm{cond}(\mathbf R_{in})$ near $K = N$ and approaches it as $K$ grows. Panel (a) shows the corresponding SINR loss; unloaded points for $K<N$ are absent because the singularity guard rejects them. Full caption: [Figure 3](07_figure_index.md#figure-3--output-sinr-versus-number-of-snapshots).
+
+![Figure 4 — diagonal-loading sweep](../figures/fig04_loading_sensitivity.png)
+
+*Figure 4.* SINR and jammer suppression over the loading sweep, including $K = N/2$, where only the loaded estimator is defined. Full caption: [Figure 4](07_figure_index.md#figure-4--diagonal-loading-sensitivity).
+
+## 2.4 Waveform, delay and Doppler discretization
 
 Generic parameters (all in `RadarParams` defaults): $f_c = 3$ GHz ($\lambda = 0.0999$ m), $B = 5$ MHz, $T = 10\ \mu$s ($BT = 50$), $f_s = 10$ MHz (complex, $2\times$ oversampled relative to $B$), PRF $= 10$ kHz, $M = 64$ pulses, receive window equal to the full PRI ($N_s = 1000$ samples). Derived values: range sample $c/2f_s = 14.99$ m, nominal resolution $c/2B = 29.98$ m, unambiguous range 14.99 km, Doppler bin 156.25 Hz, velocity bin 7.81 m/s, unambiguous velocity $\pm 249.8$ m/s. These are round numbers chosen for illustration and do not describe any specific system.
 
 * **Fractional delay.** The echo is generated by evaluating the analytic LFM envelope (D.3) at $t_n - \tau_m$ for every sample, so arbitrary (non-integer) delays are exact up to the sampling of the waveform. No interpolation filter is involved. The same holds for the Doppler phase, which is evaluated at the continuous times $t_m + t_n$.
-* **Pulse eclipsing** is not modelled: the receiver is assumed open from $t = 0$. Targets are placed beyond one pulse length ($cT/2 = 1.5$ km).
+* **Pulse eclipsing** is not modeled: the receiver is assumed open from $t = 0$. Targets are placed beyond one pulse length ($cT/2 = 1.5$ km).
 * **End of the receive window.** Lags $l > N_s - L$ ($L = 100$ samples) contain only part of the echo or part of the noise. There, the matched-filter output has lower noise power (visible as the dark strip at the far right of the range–Doppler maps). This region is excluded from the false-alarm statistics and studied separately (§3.6).
 
 ## 2.5 Matched filtering and FFT processing
 
-* The matched filter is implemented in the frequency domain. Both the data and the replica are zero-padded to the next power of two $\ge N_s + L - 1$, so the circular correlation equals the linear correlation for all lags $0..N_s-1$. A direct time-domain implementation is kept as a test reference, and the two agree to $10^{-11}$.
-* The replica is normalised by $\|\mathbf h\|$ so that white noise keeps unit variance after compression (measured 0.9996, §3.4).
-* Doppler processing applies the window along slow time, then an FFT (optionally zero-padded), then `fftshift`. Windows are normalised to unit energy. Hann is the periodic ("DFT-even") form $0.5-0.5\cos(2\pi m/M)$ used in [11].
-* **Peak interpolation.** A three-point parabola is fitted to $|y|$ at the maximum and its two neighbours. Zero padding by $8\times$ before the parabolic fit is also evaluated for Doppler.
-* **FFT binning.** The grid quantises range to 14.99 m and velocity to 7.81 m/s. §3.4 quantifies the resulting errors and losses (Figure 9).
+* The matched filter [8, 10] is implemented in the frequency domain. Both the data and the replica are zero-padded to the next power of two $\ge N_s + L - 1$, so the circular correlation equals the linear correlation for all lags $0..N_s-1$. A direct time-domain implementation is kept as a test reference, and the two agree to $10^{-11}$.
+* The replica is normalized by $\|\mathbf h\|$ so that white noise keeps unit variance after compression (measured 0.9996, §3.4).
+* Doppler processing [10] applies the window along slow time, then an FFT (optionally zero-padded), then `fftshift`. Windows are normalized to unit energy. Hann is the periodic ("DFT-even") form $0.5-0.5\cos(2\pi m/M)$ used in [11].
+* **Peak interpolation.** A three-point parabola is fitted to $|y|$ at the maximum and its two neighbors. Zero padding by $8\times$ before the parabolic fit is also evaluated for Doppler.
+* **FFT binning.** The grid quantizes range to 14.99 m and velocity to 7.81 m/s. §3.4 quantifies the resulting errors and losses (Figure 9).
+
+![Figure 9 — grid quantization, interpolation, zero padding and window effects](../figures/fig09_binning_effects.png)
+
+*Figure 9.* Effect of the numerical choices in this section: grid-argmax vs three-point parabolic estimates, 8× zero padding, and rectangular vs Hann windows. Panel (c) compares the measured peak losses with the closed-form straddle loss and the exact scalloping sum [11]. Full caption: [Figure 9](07_figure_index.md#figure-9--fft-binning-effects).
 
 ## 2.6 CFAR window handling
 
-* **1-D CA-CFAR** uses cumulative sums. The training sum for every cell is a difference of two prefix sums for the leading side and two for the lagging side, so the cost is $O(N)$ regardless of window size. A brute-force loop in the tests reproduces it to $10^{-12}$.
+* **1-D CA-CFAR** [10, 12] uses cumulative sums. The training sum for every cell is a difference of two prefix sums for the leading side and two for the lagging side, so the cost is $O(N)$ regardless of window size. A brute-force loop in the tests reproduces it to $10^{-12}$.
 * **2-D CA-CFAR** uses a summed-area table (2-D prefix sums). It takes the outer rectangle (half-size guard + train per axis) and subtracts the guard rectangle that contains the CUT. The baseline window is 2 training + 1 guard Doppler bins and 8 training + 2 guard range cells per side, giving $N_t = 7\times21 - 3\times5 = 132$ cells.
 * **Edges.**
   * `valid`: no decision where the full window does not fit.
@@ -59,7 +71,7 @@ Generic parameters (all in `RadarParams` defaults): $f_c = 3$ GHz ($\lambda = 0.
   * `wrap`: circular, used for the Doppler axis, which is periodic in PRF.
 
   In 2-D the Doppler axis wraps and the range axis uses `valid` or `truncate`.
-* **OS-CFAR** uses `numpy.lib.stride_tricks.sliding_window_view` and `np.partition` (valid edges only). The multiplier comes from solving (E.8) with Brent's method.
+* **OS-CFAR** [13] uses `numpy.lib.stride_tricks.sliding_window_view` and `np.partition` (valid edges only). The multiplier comes from solving (E.8) with Brent's method.
 
 ## 2.7 Monte Carlo methodology and uncertainty
 
@@ -71,6 +83,10 @@ Generic parameters (all in `RadarParams` defaults): $f_c = 3$ GHz ($\lambda = 0.
   * *$P_D$:* each trial is an independent window, so the count is exactly binomial. Clopper–Pearson intervals [19] are used.
   * *Multiple comparisons:* when many points are compared with theory, about 5 % should fall outside a 95 % interval. Aggregate statistics ($\sum z^2$ against $\chi^2$) are reported where many configurations are tested together. A configuration with $|z|>2.5$ is re-run with an independent seed.
 * **Required trial counts.** For $P_{FA} = 10^{-5}$ the CA study uses $2\times10^7$ cells (~200 expected false alarms, relative standard error ~7 %). The $P_D$ study uses $2\times10^4$ windows per SNR point (standard error ≤ 0.0035).
+
+![Figure 11 — Monte Carlo false-alarm estimates with confidence intervals](../figures/fig11_cfar_pfa_verification.png)
+
+*Figure 11.* Measured/requested $P_{FA}$ with 95 % intervals computed as described above: per-sequence spread for the 1-D i.i.d. study (a) and per-map spread for the 2-D processed-noise study (b). Full caption: [Figure 11](07_figure_index.md#figure-11--measured-versus-requested-false-alarm-probability).
 
 ## 2.8 Saved result format
 

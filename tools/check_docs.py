@@ -10,7 +10,9 @@ Checks:
   4. the figure filenames written by the plotting code are exactly the files in figures/;
   5. every numbered citation [n] in docs/*.md and README.md exists in docs/06_references.md,
      and every reference is cited at least once;
-  6. no stale names: no reference to a figures/*.png, docs/*.md or experiments/*.py that does not exist.
+  6. no stale names: no reference to a figures/*.png, docs/*.md or experiments/*.py that does not exist;
+  7. every image whose alt text starts with "Figure k" (in any Markdown file) embeds figNN_ with NN = k;
+  8. no common British spellings in project-written prose (bibliography entries and code are skipped).
 
 Exit status is non-zero if any check fails.
 """
@@ -144,6 +146,31 @@ for f in TEXT:
     for name in set(re.findall(r"experiments/([a-z_]+\.py)", t)):
         if not (ROOT / "experiments" / name).exists():
             errors.append(f"{f.relative_to(ROOT)}: stale script name experiments/{name}")
+
+# 7. figure-number / filename pairing for every embedded image, in every Markdown file
+for md in MD_FILES:
+    for num, fname in re.findall(r"!\[Figure (\d+)[^\]]*\]\([^)]*?(fig\d\d_[^)]+\.png)\)", md.read_text()):
+        if int(num) != int(fname[3:5]):
+            errors.append(f"{md.relative_to(ROOT)}: 'Figure {num}' embeds {fname}")
+
+# 8. lightweight British-spelling check (small fixed word list; published titles in the
+#    numbered bibliography entries, code spans and code blocks are skipped)
+BRITISH = re.compile(
+    r"\b(normalis\w*|realis(e|ed|es|ing|ation|ations)\b|quantis\w*|discretis\w*|minimis\w*|maximis\w*|"
+    r"optimis\w*|generalis\w*|equalis\w*|factoris\w*|symmetris\w*|idealis\w*|characteris(e|ed|es|ing)\b|"
+    r"behaviour\w*|neighbour\w*|colour\w*|favour\w*|centre[sd]?\b|centred|metres?\b|modell(ed|ing)|"
+    r"labell(ed|ing)|signall(ed|ing)|cancelled|catalogue|analys(e|ed|es|ing)\b|polaris\w*)",
+    re.IGNORECASE)
+for md in MD_FILES:
+    in_code = False
+    for i, line in enumerate(md.read_text().splitlines(), 1):
+        if line.startswith("```"):
+            in_code = not in_code
+        if in_code or (md.name == "06_references.md" and re.match(r"^\d+\.\s", line)):
+            continue
+        prose = re.sub(r"`[^`]*`", "", line)
+        for m in BRITISH.finditer(prose):
+            errors.append(f"{md.relative_to(ROOT)}:{i}: British spelling '{m.group(0)}'")
 
 n_links = sum(len(LINK.findall(md.read_text())) for md in MD_FILES)
 print(f"checked {len(MD_FILES)} markdown files, {n_links} links/images, {len(fig_files)} figures, "

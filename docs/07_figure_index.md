@@ -38,20 +38,20 @@ Figures are numbered continuously in the order in which they appear in [04_resul
 ![Figure 2](../figures/fig02_conventional_vs_mvdr.png)
 
 **Caption.** Conventional and MVDR beamforming with two sidelobe jammers (N = 16; target 0°; jammers +35°/40 dB and −42°/30 dB).
-(a) Beampatterns — normalised response for the conventional beamformer, MVDR with the true $\mathbf R_{in}$, and one SMI realisation with K = 2N, unloaded and with 10 dB loading; vertical lines mark the target and the jammers;
-(b) Output SINR loss — $10\log_{10}(\mathrm{SINR}/\mathrm{SINR}_{\rm opt})$ for each beamformer, with Monte Carlo means and 5–95 % ranges for the SMI cases (2000 trials) and theory markers (optimum, RMB mean (C.1), signal-present mean (C.2)).
+(a) Beampatterns — normalized response for the conventional beamformer, MVDR with the true $\mathbf R_{in}$, and one SMI realization with K = 2N, unloaded and with 10 dB loading; vertical lines mark the target and the jammers;
+(b) Output SINR loss — $10\log_{10}(\mathrm{SINR}/\mathrm{SINR}_{\rm opt})$ for each beamformer, with Monte Carlo means and 5–95 % ranges for the SMI cases (2000 trials) and theory markers (optimum, RMB mean (C.1) [4], signal-present mean (C.2)).
 
 * **Quantities.** (a) $20\log_{10}|\mathbf w^H\mathbf a(\theta)|$; (b) SINR loss in dB.
-* **What to notice.** The conventional beamformer loses 30 dB to the jammers. Clairvoyant MVDR reaches the optimum with nulls below −100 dB. The single unloaded K = 2N draw has sidelobes raised by roughly 10 dB, and loading restores the quiescent sidelobes while keeping the nulls. In (b) the Monte Carlo means fall on the theory markers.
-* **Caveats.** The patterns in (a) are single realisations. Jammer null depths for SMI vary from trial to trial; medians are given in 04 §4.2.
+* **What to notice.** The conventional beamformer loses 30 dB to the jammers. Clairvoyant MVDR reaches the optimum with nulls below −100 dB (an idealized numerical value for an exactly known covariance). The single unloaded K = 2N draw has sidelobes raised by roughly 10 dB, and loading restores the quiescent sidelobes while keeping the nulls. In (b) the Monte Carlo means fall on the theory markers.
+* **Caveats.** The patterns in (a) are single realizations. Jammer null depths for SMI vary from trial to trial; medians are given in 04 §4.2.
 
 ## Figure 3 — Output SINR versus number of snapshots
 
 ![Figure 3](../figures/fig03_sinr_vs_snapshots.png)
 
-**Caption.** Finite-snapshot behaviour of SMI/MVDR in the baseline scenario.
-(a) Normalised output SINR vs snapshots — Monte Carlo mean of $\rho$ (600 trials per point, 95 % intervals) for unloaded and 10 dB-loaded SMI, with and without the target in the training data, against the RMB law (C.1) and the signal-present relation (C.2);
-(b) Conditioning of $\hat{\mathbf R}$ — median and 10–90 % range of $\mathrm{cond}(\hat{\mathbf R})$ (200 draws per K), the Marchenko–Pastur lower-edge estimate, and $\mathrm{cond}(\mathbf R_{in})$.
+**Caption.** Finite-snapshot behavior of SMI/MVDR in the baseline scenario.
+(a) Normalized output SINR vs snapshots — Monte Carlo mean of $\rho$ (600 trials per point, 95 % intervals) for unloaded and 10 dB-loaded SMI, with and without the target in the training data, against the RMB law (C.1) [4] and the signal-present relation (C.2), derived in this project;
+(b) Conditioning of $\hat{\mathbf R}$ — median and 10–90 % range of $\mathrm{cond}(\hat{\mathbf R})$ (200 draws per K), the Marchenko–Pastur lower-edge estimate [18], and $\mathrm{cond}(\mathbf R_{in})$.
 
 * **Quantities.** (a) mean $\rho$ (dB) vs K (log axis); (b) 2-norm condition number vs K.
 * **What to notice.** The unloaded points track both theory curves from K = N upward. With the target present, 3 dB loss needs K ≈ 384 instead of ≈ 29. Loading makes K < N usable. The condition number at K = N is about 340× the true value.
@@ -74,7 +74,7 @@ Figures are numbered continuously in the order in which they appear in [04_resul
 ![Figure 5](../figures/fig05_steering_mismatch.png)
 
 **Caption.** Pointing error and target self-nulling.
-(a) SINR loss vs pointing error, SNR = 0 dB/element — conventional, MVDR from $\mathbf R_{in}$ ($S c^2$), MPDR from the full $\mathbf R$ (C.3), and Monte Carlo SMI with the target in training (K = 10N), unloaded and with 10/20 dB loading;
+(a) SINR loss vs pointing error, SNR = 0 dB/element — conventional, MVDR from $\mathbf R_{in}$ ($S c^2$), MPDR from the full $\mathbf R$ (C.3) [6], and Monte Carlo SMI with the target in training (K = 10N), unloaded and with 10/20 dB loading;
 (b) SINR loss vs SNR, δ = 1° — same estimators against per-element SNR;
 (c) Patterns, δ = 1°, SNR = 10 dB, true covariances — conventional, MVDR from $\mathbf R_{in}$, MPDR, and MPDR with 20 dB loading; vertical lines mark the look direction and the true target.
 
@@ -99,13 +99,13 @@ Figures are numbered continuously in the order in which they appear in [04_resul
 
 ![Figure 7](../figures/fig07_matched_filter.png)
 
-**Caption.** LFM pulse compression (B = 5 MHz, T = 10 µs, f_s = 10 MHz).
-(a) LFM compression, noiseless, fractional delay — sampled matched-filter output (circles) for a target at 4321.7 m (288.3 samples) against the continuous closed form (D.5) at the true delay;
+**Caption.** LFM pulse compression [8, 9] (B = 5 MHz, T = 10 µs, f_s = 10 MHz).
+(a) LFM compression, noiseless, fractional delay — sampled matched-filter output (circles) for a target at 4321.7 m (288.3 samples) against the continuous closed form (D.5) [9] at the true delay;
 (b) Two equal targets, ΔR = c/(2B) — oversampled (100 MHz) matched-filter output for relative phases 0, π/2 and π;
 (c) LFM range–Doppler coupling — measured matched-filter peak shift vs Doppler shift against $-f_D T/B$; shading marks the unambiguous Doppler interval of the radar model.
 
 * **Quantities.** (a, b) $|y|/\sqrt L$ (dB) vs lag; (c) delay shift (samples) vs Doppler (kHz).
-* **What to notice.** The samples lie on the continuous curve (max deviation 0.007). Whether two targets at the nominal resolution are resolved depends on their relative phase. The coupling shift is linear and matches theory to 0.015 samples. Within the unambiguous Doppler interval it is at most 0.1 sample.
+* **What to notice.** The samples lie on the continuous curve (max deviation 0.007). Whether two targets at the nominal resolution are resolved depends on their relative phase. The coupling shift is linear and matches the LFM prediction (D.7) [9] to 0.015 samples. Within the unambiguous Doppler interval it is at most 0.1 sample.
 * **Caveats.** Panel (c) deliberately extends to ±500 kHz, far beyond the unambiguous Doppler, to make the shift measurable. Panel (b) uses noiseless, oversampled data.
 
 ## Figure 8 — Range–Doppler map
@@ -119,17 +119,17 @@ Figures are numbered continuously in the order in which they appear in [04_resul
 
 * **Quantities.** Power (dB re: noise) vs range (km) and radial velocity (m/s, positive = closing).
 * **What to notice.** All three targets appear where they were injected, closing targets at positive velocity. Target 1 peaks 21.6 dB above the floor. The dark strip at ranges above 13.5 km is the partial-overlap region where the matched filter integrates less noise (§2.4).
-* **Caveats.** The pooling in (a) is a display operation only; estimates and CFAR use unpooled cells. In the single-realisation Doppler cut (c), the noise hides the lower Hann sidelobes.
+* **Caveats.** The pooling in (a) is a display operation only; estimates and CFAR use unpooled cells. In the single-realization Doppler cut (c), the noise hides the lower Hann sidelobes.
 
 ## Figure 9 — FFT binning effects
 
 ![Figure 9](../figures/fig09_binning_effects.png)
 
-**Caption.** Grid quantisation in range and Doppler.
+**Caption.** Grid quantization in range and Doppler.
 (a) Range estimate error — noiseless error of the grid-argmax and three-point parabolic estimators vs the true delay's offset from the sample grid;
 (b) Doppler estimate error — same for a slow-time tone with rectangular and Hann windows, plus 8× zero padding followed by parabolic interpolation;
-(c) Straddle and scalloping loss — peak loss vs offset, measured (markers) and exact or closed form (lines) for range straddle (D.5) and Doppler scalloping (D.8);
-(d) Monte Carlo RMS error — RMS range and velocity error vs post-processing SNR for random sub-cell target positions (150 trials per point, rectangular window), with the uniform-quantisation level $1/\sqrt{12}$.
+(c) Straddle and scalloping loss — peak loss vs offset, measured (markers) and exact or closed form (lines) for range straddle (D.5) and Doppler scalloping (D.8) [11];
+(d) Monte Carlo RMS error — RMS range and velocity error vs post-processing SNR for random sub-cell target positions (150 trials per point, rectangular window), with the uniform-quantization level $1/\sqrt{12}$.
 
 * **Quantities.** Errors in samples or bins; losses in dB; RMS error in samples or bins (log scale).
 * **What to notice.** The grid estimator has a saw-tooth error of ±0.5 cell. Parabolic interpolation reduces the range error to 0.03 sample but the rectangular-window Doppler error only to 0.23 bin, so the shape of the peak matters. Zero padding removes the Doppler bias. Worst-case scalloping is 3.92 dB (rect) and 1.42 dB (Hann). In (d) the parabolic velocity error saturates at its bias level.
@@ -141,17 +141,17 @@ Figures are numbered continuously in the order in which they appear in [04_resul
 
 **Caption.** One range cut through the Doppler bin of three targets at 101.3 m/s ($P_{FA} = 10^{-4}$, 8 training and 2 guard cells per side).
 (a) Range cut at the target Doppler bin — cell power, CA-CFAR threshold (valid edges), CA-CFAR with truncated windows at the edges, OS-CFAR threshold (k = 12 of 16), and detections;
-(b) Zoom: weak target masked by strong neighbour — the −15 dB target at 4.32 km and the −10 dB target 9 cells away (dash-dot lines).
+(b) Zoom: weak target masked by strong neighbor — the −15 dB target at 4.32 km and the −10 dB target 9 cells away (dash-dot lines).
 
 * **Quantities.** Power and thresholds in dB relative to the noise floor vs range.
-* **What to notice.** At the weak target the strong neighbour raises the CA threshold to 27.6 dB above noise, against 19.5 dB for OS-CFAR and a cell power of 22.0 dB. CA-CFAR therefore misses the weak target and OS-CFAR detects it. The CA threshold has a flat-topped "shoulder" wherever a strong target falls inside the training window. One noise cell near 6.5 km is a false alarm for both detectors.
-* **Caveats.** This is a single realisation chosen to show the masking mechanism. The separation and amplitudes were selected from a 20-seed scan over six candidate geometries: masker offset of 5, 7 or 9 cells, and masker SNR of −5 or −10 dB. That scan is saved in `results/cfar_masking_seed_scan.json` (per-seed outcomes and thresholds) and can be regenerated with `python experiments/cfar_masking_seed_scan.py` (seeds 0–19). For the selected geometry, CA-CFAR detected the weak target in 0/20 realisations and OS-CFAR in 20/20. For the other five candidates OS-CFAR detected it in 0, 12, 0, 1 and 2 of 20, and CA in none. The scan simulates only the two nearby targets. The panel shown here also contains a distant third target and uses a different random draw.
+* **What to notice.** At the weak target the strong neighbor raises the CA threshold to 27.6 dB above noise, against 19.5 dB for OS-CFAR and a cell power of 22.0 dB. CA-CFAR therefore misses the weak target and OS-CFAR detects it, the multiple-target behavior that motivates OS-CFAR [13]. The CA threshold has a flat-topped "shoulder" wherever a strong target falls inside the training window. One noise cell near 6.5 km is a false alarm for both detectors.
+* **Caveats.** This is a single realization chosen to show the masking mechanism. The separation and amplitudes were selected from a 20-seed scan over six candidate geometries: masker offset of 5, 7 or 9 cells, and masker SNR of −5 or −10 dB. That scan is saved in `results/cfar_masking_seed_scan.json` (per-seed outcomes and thresholds) and can be regenerated with `python experiments/cfar_masking_seed_scan.py` (seeds 0–19). For the selected geometry, CA-CFAR detected the weak target in 0/20 realizations and OS-CFAR in 20/20. For the other five candidates OS-CFAR detected it in 0, 12, 0, 1 and 2 of 20, and CA in none. The scan simulates only the two nearby targets. The panel shown here also contains a distant third target and uses a different random draw.
 
 ## Figure 11 — Measured versus requested false-alarm probability
 
 ![Figure 11](../figures/fig11_cfar_pfa_verification.png)
 
-**Caption.** Monte Carlo verification of the CFAR false-alarm rate.
+**Caption.** Monte Carlo verification of the CFAR false-alarm rate against the nominal CA-CFAR (E.5) [12] and OS-CFAR (E.8) [13] values.
 (a) i.i.d. exponential noise, 1-D window — measured/requested $P_{FA}$ with 95 % intervals for CA-CFAR ($N_t$ = 16, 32; $2\times10^7$ cells per point) and OS-CFAR ($N_t$ = 16, k = 12; $4\times10^6$ cells);
 (b) 2-D CA-CFAR on processed noise — measured/requested $P_{FA}$ ($N_t = 132$; 60 maps per case) at $10^{-3}$ and $10^{-4}$ for noise passed through the matched filter at $f_s = 2B$ or $B$ and a rectangular or Hann Doppler window, with the $N_{\rm eff}$ moment-matching prediction (E.9) (diamonds).
 
@@ -164,7 +164,7 @@ Figures are numbered continuously in the order in which they appear in [04_resul
 ![Figure 12](../figures/fig12_pd_vs_snr.png)
 
 **Caption.** Detection performance at $P_{FA} = 10^{-4}$.
-(a) $P_D$ vs SNR — ideal (known-noise) detector and CA-CFAR ($N_t$ = 16) for Swerling 0 (Marcum Q (E.2); quadrature (E.7)) and Swerling 1 ((E.3); (E.6)), with Monte Carlo points (20 000 windows each, Clopper–Pearson 95 %);
+(a) $P_D$ vs SNR — ideal (known-noise) detector and CA-CFAR ($N_t$ = 16) for Swerling 0 (Marcum Q (E.2) [14]; quadrature (E.7)) and Swerling 1 [15] ((E.3); (E.6)), with Monte Carlo points (20 000 windows each, Clopper–Pearson 95 % [19]);
 (b) CFAR loss — extra SNR required by CA-CFAR relative to the ideal detector for a Swerling-0 target vs number of training cells, at $P_D$ = 0.5 and 0.9.
 
 * **Quantities.** (a) $P_D$ vs single-cell SNR (dB); (b) loss (dB) vs $N_t$ (log axis).
@@ -181,4 +181,4 @@ Figures are numbered continuously in the order in which they appear in [04_resul
 
 * **Quantities.** Power (dB re: each map's own floor; display max-pooled over 5 range cells) vs range and velocity.
 * **What to notice.** The two maps look alike because each is scaled to its own floor. The conventional floor, however, is 29.5 dB higher, so both targets are buried and only false alarms appear. After MVDR both targets are detected.
-* **Caveats.** Single realisation. False alarms (10 and 14 cells) are in line with the expectation of 8.2 including the correlated-noise inflation; one map cannot test this. The MVDR covariance includes a small amount of target energy from the data cube.
+* **Caveats.** Single realization. False alarms (10 and 14 cells) are in line with the expectation of 8.2 including the correlated-noise inflation; one map cannot test this. The MVDR covariance includes a small amount of target energy from the data cube.

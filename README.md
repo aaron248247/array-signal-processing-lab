@@ -10,7 +10,7 @@ All scenarios use generic, round-number parameters. They do not represent any re
 2. How much SINR does MVDR gain over conventional beamforming against sidelobe jammers? How quickly is that gain lost when the covariance is estimated from few snapshots, when the target contaminates the training data, or when the look direction is slightly wrong?
 3. What does diagonal loading buy, and where does it start to remove the adaptivity it is meant to protect?
 4. Are injected ranges and Doppler shifts recovered by matched filtering and pulse-Doppler processing, and how large are the grid (binning) effects?
-5. Does CA-CFAR achieve its design false-alarm probability, both in idealised noise and in noise that has passed through the processing chain?
+5. Does CA-CFAR achieve its design false-alarm probability, both in idealized noise and in noise that has passed through the processing chain?
 
 ## Main equations
 
@@ -18,15 +18,15 @@ Steering vector and conventional array factor ($x_n = nd$, $\theta$ from broadsi
 
 $$a_n(\theta) = e^{\,jkx_n\sin\theta},\qquad AF(\theta) = e^{j(N-1)\psi/2}\,\frac{\sin(N\psi/2)}{N\sin(\psi/2)},\quad \psi = kd(\sin\theta-\sin\theta_0)$$
 
-MVDR weights and the Reed–Mallett–Brennan loss for SMI with $K$ signal-free snapshots:
+MVDR weights [3] and the Reed–Mallett–Brennan loss [4] for SMI with $K$ signal-free snapshots:
 
 $$\mathbf w = \frac{\mathbf R^{-1}\mathbf a_0}{\mathbf a_0^H\mathbf R^{-1}\mathbf a_0},\qquad E\!\left[\frac{\mathrm{SINR}(\hat{\mathbf w})}{\mathrm{SINR}_{\rm opt}}\right] = \frac{K-N+2}{K+1}$$
 
-Monostatic delay and Doppler ($v>0$ closing), LFM resolution, and CA-CFAR threshold multiplier for $N_t$ training cells:
+Monostatic delay and Doppler ($v>0$ closing), LFM resolution, and CA-CFAR threshold multiplier [12] for $N_t$ training cells:
 
 $$\tau = \frac{2R}{c},\qquad f_D = \frac{2v}{\lambda},\qquad \Delta R = \frac{c}{2B},\qquad \alpha = N_t\left(P_{FA}^{-1/N_t}-1\right)$$
 
-Derivations, assumptions and conventions are in [docs/01_theory.md](docs/01_theory.md).
+Derivations, assumptions and conventions are in [docs/01_theory.md](docs/01_theory.md). Bracketed numbers refer to [docs/06_references.md](docs/06_references.md).
 
 ## Representative results
 
@@ -36,7 +36,7 @@ Derivations, assumptions and conventions are in [docs/01_theory.md](docs/01_theo
 
 <p align="center"><img src="figures/fig03_sinr_vs_snapshots.png" width="900" alt="Figure 3"></p>
 
-**Figure 3.** (a) Normalised SINR vs number of training snapshots, against the RMB law and the target-in-training relation. (b) Condition number of the sample covariance.
+**Figure 3.** (a) Normalized SINR vs number of training snapshots, against the RMB law and the target-in-training relation. (b) Condition number of the sample covariance.
 
 <p align="center"><img src="figures/fig05_steering_mismatch.png" width="900" alt="Figure 5"></p>
 
@@ -57,8 +57,8 @@ All 13 figures, with full captions, are in [docs/07_figure_index.md](docs/07_fig
 | Check | Result |
 |---|---|
 | Numerical vs closed-form array factor (N = 8, 16; 5 steering cases; 0.001° grid) | max error $2.1\times10^{-15}$; nulls within $1.4\times10^{-13}$ deg |
-| MVDR distortionless constraint, clairvoyant SINR, single-jammer null depth, Cox mismatch formula | reproduced to $10^{-8}$–$10^{-12}$ relative |
-| SMI loss vs RMB, $16\le K\le 640$ | largest $\lvert z\rvert$ = 1.6; K = 2N: 0.5426 ± 0.0019 vs 0.5455 |
+| MVDR distortionless constraint, clairvoyant SINR, single-jammer null depth, Cox mismatch formula [6] | reproduced to $10^{-8}$–$10^{-12}$ relative |
+| SMI loss vs RMB [4], $16\le K\le 640$ ([03 §3.3](docs/03_verification_validation.md#33-finite-snapshot-behavior-statistical)) | largest $\lvert z\rvert$ = 1.6; K = 2N: 0.5426 ± 0.0019 vs 0.5455 |
 | Matched filter vs closed-form LFM autocorrelation | 0.007 of peak at $f_s = 2B$ |
 | Pulse-compression SNR gain (L = 100) | 10.04 ± 0.07 vs 10.00 |
 | Range–Doppler coupling $-f_D T/B$ | within 0.015 samples |
@@ -85,7 +85,7 @@ Tables with all values are in [docs/04_results.md](docs/04_results.md).
 * Uncorrelated point sources and white Gaussian noise. No clutter, multipath, or coherent interference.
 * Constant-amplitude point targets within a CPI (Swerling 0 or 1 only for detection). No pulse eclipsing. Envelope time-compression neglected.
 * Single-CPI processing. No tracking, no multi-CPI integration.
-* The integrated array + radar case is a single realisation and serves as a demonstration.
+* The integrated array + radar case is a single realization and serves as a demonstration.
 * The $N_{\rm eff}$ correction for correlated CFAR training cells is a moment-matching approximation. It overestimates the measured inflation in the most correlated case.
 
 The roadmap of extensions not implemented here is in [docs/05_roadmap.md](docs/05_roadmap.md).
@@ -148,7 +148,7 @@ array-signal-processing-lab/
 ## Documentation
 
 1. [Theory](docs/01_theory.md): models, derivations, conventions
-2. [Numerical method](docs/02_numerical_method.md): discretisation, linear algebra, Monte Carlo design, result format
+2. [Numerical method](docs/02_numerical_method.md): discretization, linear algebra, Monte Carlo design, result format
 3. [Verification and validation](docs/03_verification_validation.md): exact, statistical, sensitivity and exploratory checks
 4. [Results](docs/04_results.md): numbers and figures
 5. [Roadmap](docs/05_roadmap.md): what is not implemented

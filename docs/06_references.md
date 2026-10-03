@@ -1,6 +1,6 @@
 # 6. References
 
-Numbered references cited in the documents and source code. Bibliographic details were checked on 2026-10-03 against publisher, IEEE Xplore, NASA ADS or library catalogue listings found by web search. A DOI is given only where the listing confirmed it. Where no DOI is given, the entry could not be confirmed online beyond title, venue, volume and pages, or (for books) the item has no DOI in common use.
+Numbered references cited inline in the documents and in source-code comments. DOIs are given where available; books are identified by ISBN.
 
 1. H. L. Van Trees, *Optimum Array Processing* (Part IV of *Detection, Estimation, and Modulation Theory*). New York: Wiley-Interscience, 2002. ISBN 0-471-09390-4.
 2. B. D. Van Veen and K. M. Buckley, "Beamforming: a versatile approach to spatial filtering," *IEEE ASSP Magazine*, vol. 5, no. 2, pp. 4–24, Apr. 1988.
@@ -24,21 +24,21 @@ Numbered references cited in the documents and source code. Bibliographic detail
 
 ## Where each reference is used
 
-| Topic | References | Where |
+| Topic | References | Where cited |
 |---|---|---|
-| ULA geometry, steering vectors, array factor, conventional beamforming | [1], [2] | 01 §A, `steering.py` |
-| MVDR / Capon | [3], [1] | 01 §B.4, `beamforming.py` |
-| Sample covariance, SMI convergence | [4], [1] | 01 §C.1–C.2, `metrics.py` |
-| Diagonal loading, adaptive-array robustness | [5], [7] | 01 §C.3, Figure 4 |
-| Steering mismatch, MPDR self-nulling | [6], [1] | 01 §C.4, `metrics.py`, Figure 5 |
-| Sample-eigenvalue spread | [18] | 01 §C.3, Figure 3b |
-| Matched filtering | [8], [10] | 01 §D.3, `matched_filter.py` |
-| LFM ambiguity, range–Doppler coupling | [9] | 01 §D.3, `waveforms.py` |
-| Radar, Doppler and range–Doppler processing, straddle | [10] | 01 §D.4–D.5 |
-| Windows, scalloping loss | [11] | 01 §D.5, `doppler.py` |
-| CA-CFAR | [12], [10] | 01 §E.2, `cfar.py` |
-| OS-CFAR, multiple-target masking | [13] | 01 §E.3, Figure 10 |
-| Detection in Gaussian noise, Marcum Q | [14], [17], [10] | 01 §E.1 |
-| Fluctuating targets | [15] | 01 §E.1, E.2 |
-| Independent ideal-detector cross-check | [16] | 03 §3.5, `cfar_pd_snr.py` |
-| Binomial confidence intervals | [19] | 02 §2.7, `cfar.py` |
+| ULA geometry, steering vectors, array factor, conventional beamforming, beamwidth | [1], [2] | 01 §A.1–A.2, B.2; 03 §3.1; `steering.py` |
+| MVDR / Capon | [3], [1] | README; 01 §B.4; 03 §3.2; `beamforming.py` |
+| Sample covariance, SMI convergence (RMB) | [4], [1] | README; 01 §B.2, C.1–C.2 and Figure 3; 02 §2.3; 03 §3.2–3.3, §3.7, Figures 2, 3, 6; 04 §4.2, 4.3, 4.6, 4.14; 07 Figures 2, 3; `metrics.py` |
+| Diagonal loading, adaptive-array robustness | [5], [7] | 01 §C.3 and Figure 4; 02 §2.3; 03 §3.7; 04 §4.4; 05 §5.2 |
+| Steering mismatch, MPDR self-nulling | [6], [1] | README; 01 §C.4 and Figure 5; 03 §3.7, Figure 5; 04 §4.5; 07 Figure 5; `metrics.py` |
+| Sample-eigenvalue spread | [18] | 01 §C.3 and Figure 3; 03 §3.3, §3.7; 04 §4.3; 07 Figure 3 |
+| Matched filtering | [8], [10] | 01 §D.3; 02 §2.5; 03 §3.4; 07 Figure 7; `matched_filter.py` |
+| LFM ambiguity, range–Doppler coupling | [9] | 01 §D.3 and Figure 7; 03 §3.4, Figure 7; 04 §4.7; 07 Figure 7; `waveforms.py` |
+| Radar delay/Doppler, range resolution, Doppler and range–Doppler processing, straddle | [10] | 01 §D.1, D.3–D.5; 02 §2.5; 03 §3.4; 04 §4.7 |
+| Windows, scalloping loss | [11] | 01 §D.4–D.5 and Figure 9; 02 §2.5, Figure 9; 03 §3.4, §3.7, Figure 9; 04 §4.9; 07 Figure 9; `doppler.py` |
+| CA-CFAR | [12], [10] | README; 01 §E.2; 02 §2.6; 03 §3.5, Figure 11; 04 §4.11; 05 §5.2; 07 Figure 11; `cfar.py` |
+| OS-CFAR, multiple-target masking | [13] | 01 §E.3 and Figure 10; 02 §2.6; 03 §3.5, §3.8, Figures 10, 11; 04 §4.10, 4.11; 05 §5.2; 07 Figures 10, 11 |
+| Detection in Gaussian noise, Marcum Q | [14], [17], [10] | 01 §E.1 and Figure 12; 03 §3.5, Figure 12; 07 Figure 12 |
+| Fluctuating targets | [15] | 01 §E.1 and Figure 12; 03 §3.5, Figure 12; 04 §4.12; 07 Figure 12 |
+| Independent ideal-detector cross-check | [16] | 01 §E.1; 03 §3.5; 04 §4.12; 05 §5.2; `cfar_pd_snr.py` |
+| Binomial confidence intervals | [19] | 02 §2.7; 03 §3.5, Figure 12; 07 Figure 12; `cfar.py` |
