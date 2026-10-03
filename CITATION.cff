@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "array-signal-processing-lab: verified array processing, adaptive beamforming, pulse-Doppler processing and CFAR detection"
+abstract: >-
+  A Python study of narrowband uniform-linear-array processing, conventional
+  and MVDR beamforming, finite-sample covariance effects, diagonal loading,
+  steering mismatch, LFM pulse compression, range-Doppler processing and
+  CA/OS-CFAR detection, with analytical and Monte Carlo verification.
+type: software
+authors:
+  - family-names: Curtis
+    given-names: Aaron
+version: 0.1.0
+date-released: 2026-10-03
+license: MIT
+keywords:
+  - array signal processing
+  - adaptive beamforming
+  - MVDR
+  - radar signal processing
+  - matched filter
+  - CFAR
+  - detection theory
