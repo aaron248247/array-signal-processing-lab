@@ -256,7 +256,7 @@ def plot():
     noise = np.median(z["ex_z"]) / np.log(2)
     zdb = 10 * np.log10(z["ex_z"] / noise)
     for ax, sl, title in ((axes[0], slice(None), "(a) Range cut at the target Doppler bin, P$_{FA}$ = 10$^{-4}$"),
-                          (axes[1], slice(270, 330), "(b) Zoom: weak target masked by strong neighbour")):
+                          (axes[1], slice(270, 330), "(b) Zoom: weak target masked by strong neighbor")):
         ax.plot(r[sl], zdb[sl], color=MUTED, lw=0.8, label="cell power |y|²")
         ax.plot(r[sl], 10 * np.log10(z["ex_thr_ca"][sl] / noise), color=C[0], lw=1.5, label="CA-CFAR threshold (valid)")
         ax.plot(r[sl], 10 * np.log10(z["ex_thr_trunc"][sl] / noise), color=C[0], lw=1.0, ls=":",

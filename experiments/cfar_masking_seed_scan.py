@@ -136,7 +136,7 @@ def run():
                     "k": OS_K, "edge": "valid"},
         "detection_criterion": "any detection in lags l0-1..l0+1, l0 = round(2 R_weak f_s / c)",
         "seeds": SEEDS,
-        "rng": "numpy.random.default_rng(seed), one generator per realisation",
+        "rng": "numpy.random.default_rng(seed), one generator per realization",
         "note": "Two targets only; Figure 10 also includes a distant third target (9007.4 m).",
     }
     save_results(NAME, config, metrics, arrays, elapsed_s=time.perf_counter() - t0)

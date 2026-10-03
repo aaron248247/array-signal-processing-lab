@@ -185,7 +185,7 @@ def plot():
     ax.set_ylim(-22, 0.5)
     ax.set_xlabel("training snapshots K")
     ax.set_ylabel(r"mean $\rho$ = SINR / SINR$_{\rm opt}$ (dB)")
-    ax.set_title("(a) Normalised output SINR vs snapshots (N = 16)", loc="left")
+    ax.set_title("(a) Normalized output SINR vs snapshots (N = 16)", loc="left")
     ax.legend(loc="lower right", fontsize=7.2)
     ax.text(4.2, -11.5, "unloaded SMI undefined\nfor K < N (rank K)", fontsize=7.5, color=MUTED, va="top")
 

@@ -457,7 +457,7 @@ def plot():
                 label=f"{win}: parabolic")
         ax.plot(f, z[f"dop_{win}_err_zp8_interp_bins"], color=col, ls=":", marker="^", ms=3, mfc="none",
                 label=f"{win}: 8× zero-pad + parabolic")
-    ax.set_xlabel("true Doppler offset from bin centre (bins)")
+    ax.set_xlabel("true Doppler offset from bin center (bins)")
     ax.set_ylabel("Doppler error (bins)")
     ax.set_title(f"(b) Doppler estimate error (1 bin = {m['derived_parameters']['velocity_bin_mps']:.2f} m/s)",
                  loc="left")
@@ -487,8 +487,8 @@ def plot():
     ax.semilogy(x, z["mc_rms_v_interp"] / m["derived_parameters"]["velocity_bin_mps"], "s--", mfc="none",
                 color=C[1], label="velocity, parabolic")
     ax.axhline(1 / np.sqrt(12), color=MUTED, ls=":", lw=1)
-    ax.text(x[0], 1 / np.sqrt(12) * 1.08, r"uniform quantisation 1/$\sqrt{12}$", fontsize=7.5, color=MUTED)
-    ax.set_xlabel("post-processing SNR for a grid-centred target (dB)")
+    ax.text(x[0], 1 / np.sqrt(12) * 1.08, r"uniform quantization 1/$\sqrt{12}$", fontsize=7.5, color=MUTED)
+    ax.set_xlabel("post-processing SNR for a grid-centered target (dB)")
     ax.set_ylabel("RMS error (range samples or Doppler bins)")
     ax.set_title(f"(d) Monte Carlo RMS error, {e['n_trials_per_snr']} trials/point, rect window", loc="left")
     ax.legend(loc="lower left", fontsize=7.5)

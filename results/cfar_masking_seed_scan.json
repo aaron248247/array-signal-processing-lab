@@ -74,7 +74,7 @@
       18,
       19
     ],
-    "rng": "numpy.random.default_rng(seed), one generator per realisation",
+    "rng": "numpy.random.default_rng(seed), one generator per realization",
     "note": "Two targets only; Figure 10 also includes a distant third target (9007.4 m)."
   },
   "metrics": {
@@ -1737,8 +1737,8 @@
     "ca_alpha": 12.452470560622764,
     "os_alpha": 11.080194352005792
   },
-  "elapsed_s": 1.5189215529999984,
-  "timestamp_utc": "2026-10-03T17:41:07Z",
+  "elapsed_s": 1.796865442000012,
+  "timestamp_utc": "2026-10-03T18:29:09Z",
   "environment": {
     "python": "3.13.16",
     "numpy": "2.5.3",
