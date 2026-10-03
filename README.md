@@ -95,7 +95,7 @@ The roadmap of extensions not implemented here is in [docs/05_roadmap.md](docs/0
 Requires Python ≥ 3.10.
 
 ```bash
-git clone <repository-url> array-signal-processing-lab
+git clone https://github.com/aaron248247/array-signal-processing-lab.git
 cd array-signal-processing-lab
 python -m pip install -e ".[test]"     # numpy, scipy, matplotlib, pytest
 ```
