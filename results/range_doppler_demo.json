@@ -1,0 +1,339 @@
+{
+  "experiment": "range_doppler_demo",
+  "config": {
+    "radar": {
+      "carrier_hz": 3000000000.0,
+      "bandwidth_hz": 5000000.0,
+      "pulse_s": 1e-05,
+      "fs_hz": 10000000.0,
+      "prf_hz": 10000.0,
+      "n_pulses": 64,
+      "c": 299792458.0
+    },
+    "targets": [
+      {
+        "range_m": 4321.7,
+        "velocity_mps": 101.3,
+        "snr_db": -15.0,
+        "phase_rad": 0.3
+      },
+      {
+        "range_m": 6200.0,
+        "velocity_mps": -45.6,
+        "snr_db": -20.0,
+        "phase_rad": 1.1
+      },
+      {
+        "range_m": 9007.4,
+        "velocity_mps": 12.2,
+        "snr_db": -25.0,
+        "phase_rad": 2.0
+      }
+    ],
+    "noise_power": 1.0,
+    "seed": 20261007
+  },
+  "metrics": {
+    "derived_parameters": {
+      "wavelength_m": 0.09993081933333334,
+      "range_bin_m": 14.9896229,
+      "range_resolution_m": 29.9792458,
+      "unambiguous_range_m": 14989.6229,
+      "doppler_bin_hz": 156.25,
+      "velocity_bin_mps": 7.807095260416667,
+      "unambiguous_velocity_mps": 249.82704833333335,
+      "time_bandwidth": 50.00000000000001,
+      "pulse_samples": 100,
+      "range_migration_over_cpi_m_at_250mps": 1.6
+    },
+    "matched_filter": {
+      "mf_vs_closed_form_max_abs_dev_near_peak": 0.006974084112709157,
+      "mf_vs_closed_form_peak_dev": 0.006065768268624705,
+      "mainlobe_3dB_width_x_B": 0.9,
+      "mainlobe_4dB_width_x_B": 1.05,
+      "first_null_delay_x_B": 1.025,
+      "first_null_delay_x_B_closed_form": 1.0208423910739957,
+      "two_target_resolution": {
+        "dR=0.75c/2B,phase=0": {
+          "n_peaks": 1,
+          "dip_db": 0.0
+        },
+        "dR=0.75c/2B,phase=pi/2": {
+          "n_peaks": 1,
+          "dip_db": 0.0
+        },
+        "dR=0.75c/2B,phase=pi": {
+          "n_peaks": 2,
+          "dip_db": -24.513776750962883
+        },
+        "dR=1.00c/2B,phase=0": {
+          "n_peaks": 1,
+          "dip_db": 0.0
+        },
+        "dR=1.00c/2B,phase=pi/2": {
+          "n_peaks": 2,
+          "dip_db": -0.9126074389842427
+        },
+        "dR=1.00c/2B,phase=pi": {
+          "n_peaks": 2,
+          "dip_db": -60.5655515684508
+        },
+        "dR=1.25c/2B,phase=0": {
+          "n_peaks": 1,
+          "dip_db": 0.0
+        },
+        "dR=1.25c/2B,phase=pi/2": {
+          "n_peaks": 2,
+          "dip_db": -3.5477619812161887
+        },
+        "dR=1.25c/2B,phase=pi": {
+          "n_peaks": 2,
+          "dip_db": -25.07873975695781
+        },
+        "dR=1.50c/2B,phase=0": {
+          "n_peaks": 2,
+          "dip_db": -2.0811458127003792
+        },
+        "dR=1.50c/2B,phase=pi/2": {
+          "n_peaks": 2,
+          "dip_db": -7.335884375858431
+        },
+        "dR=1.50c/2B,phase=pi": {
+          "n_peaks": 2,
+          "dip_db": -61.64916105833196
+        },
+        "dR=2.00c/2B,phase=0": {
+          "n_peaks": 2,
+          "dip_db": -27.631058008466034
+        },
+        "dR=2.00c/2B,phase=pi/2": {
+          "n_peaks": 2,
+          "dip_db": -30.77197793240071
+        },
+        "dR=2.00c/2B,phase=pi": {
+          "n_peaks": 2,
+          "dip_db": -60.57840794036665
+        }
+      },
+      "snr_gain": {
+        "input_snr_db": -10.0,
+        "pulse_samples_L": 100,
+        "expected_output_snr_db": 10.0,
+        "measured_output_snr_db": 10.016822167733109,
+        "measured_output_snr_linear": 10.038809587575937,
+        "measured_linear_stderr": 0.07224766912920305,
+        "expected_output_snr_linear": 10.0,
+        "noise_variance_after_mf": 0.9996452692264147,
+        "n_trials": 4000
+      },
+      "coupling_max_abs_dev_samples": 0.015434557859350662,
+      "coupling_range_bias_at_max_unambiguous_doppler_m": 1.4989622900000001
+    },
+    "range_doppler_map": {
+      "estimates": [
+        {
+          "window": "rect",
+          "target": 0,
+          "true_range_m": 4321.7,
+          "true_velocity_mps": 101.3,
+          "range_grid_m": 4317.0113952,
+          "range_interp_m": 4320.174938271506,
+          "velocity_grid_mps": 101.49223838541667,
+          "velocity_interp_mps": 101.4896089176684,
+          "range_err_grid_m": -4.688604799999666,
+          "range_err_interp_m": -1.5250617284937107,
+          "vel_err_grid_mps": 0.19223838541667249,
+          "vel_err_interp_mps": 0.1896089176684086,
+          "peak_snr_db": 23.108023906416694,
+          "expected_peak_snr_db_on_grid": 23.06179973983887
+        },
+        {
+          "window": "rect",
+          "target": 1,
+          "true_range_m": 6200.0,
+          "true_velocity_mps": -45.6,
+          "range_grid_m": 6205.7038806,
+          "range_interp_m": 6202.308775041998,
+          "velocity_grid_mps": -46.842571562500005,
+          "velocity_interp_mps": -46.81409192596628,
+          "range_err_grid_m": 5.703880600000048,
+          "range_err_interp_m": 2.3087750419981603,
+          "vel_err_grid_mps": -1.2425715625000038,
+          "vel_err_interp_mps": -1.2140919259662795,
+          "peak_snr_db": 17.60849454183617,
+          "expected_peak_snr_db_on_grid": 18.06179973983887
+        },
+        {
+          "window": "rect",
+          "target": 2,
+          "true_range_m": 9007.4,
+          "true_velocity_mps": 12.2,
+          "range_grid_m": 8993.77374,
+          "range_interp_m": 8995.728669245707,
+          "velocity_grid_mps": 7.807095260416667,
+          "velocity_interp_mps": 8.980506943889754,
+          "range_err_grid_m": -13.626259999999093,
+          "range_err_interp_m": -11.671330754292285,
+          "vel_err_grid_mps": -4.392904739583332,
+          "vel_err_interp_mps": -3.2194930561102453,
+          "peak_snr_db": 11.14250264349478,
+          "expected_peak_snr_db_on_grid": 13.061799739838872
+        },
+        {
+          "window": "hann",
+          "target": 0,
+          "true_range_m": 4321.7,
+          "true_velocity_mps": 101.3,
+          "range_grid_m": 4317.0113952,
+          "range_interp_m": 4319.537823162949,
+          "velocity_grid_mps": 101.49223838541667,
+          "velocity_interp_mps": 100.99811243915718,
+          "range_err_grid_m": -4.688604799999666,
+          "range_err_interp_m": -2.162176837050538,
+          "vel_err_grid_mps": 0.19223838541667249,
+          "vel_err_interp_mps": -0.30188756084281465,
+          "peak_snr_db": 21.57527391242037,
+          "expected_peak_snr_db_on_grid": 21.30088714928206
+        },
+        {
+          "window": "hann",
+          "target": 1,
+          "true_range_m": 6200.0,
+          "true_velocity_mps": -45.6,
+          "range_grid_m": 6205.7038806,
+          "range_interp_m": 6201.3653547871645,
+          "velocity_grid_mps": -46.842571562500005,
+          "velocity_interp_mps": -45.258229699620216,
+          "range_err_grid_m": 5.703880600000048,
+          "range_err_interp_m": 1.365354787164506,
+          "vel_err_grid_mps": -1.2425715625000038,
+          "vel_err_interp_mps": 0.3417703003797854,
+          "peak_snr_db": 15.93003524930684,
+          "expected_peak_snr_db_on_grid": 16.30088714928206
+        },
+        {
+          "window": "hann",
+          "target": 2,
+          "true_range_m": 9007.4,
+          "true_velocity_mps": 12.2,
+          "range_grid_m": 8993.77374,
+          "range_interp_m": 8996.214266206318,
+          "velocity_grid_mps": 7.807095260416667,
+          "velocity_interp_mps": 8.788287980864636,
+          "range_err_grid_m": -13.626259999999093,
+          "range_err_interp_m": -11.18573379368172,
+          "vel_err_grid_mps": -4.392904739583332,
+          "vel_err_interp_mps": -3.411712019135363,
+          "peak_snr_db": 12.443901184382822,
+          "expected_peak_snr_db_on_grid": 11.300887149282062
+        }
+      ],
+      "true_targets": [
+        {
+          "range_m": 4321.7,
+          "velocity_mps": 101.3,
+          "snr_db": -15.0,
+          "phase_rad": 0.3
+        },
+        {
+          "range_m": 6200.0,
+          "velocity_mps": -45.6,
+          "snr_db": -20.0,
+          "phase_rad": 1.1
+        },
+        {
+          "range_m": 9007.4,
+          "velocity_mps": 12.2,
+          "snr_db": -25.0,
+          "phase_rad": 2.0
+        }
+      ]
+    },
+    "binning": {
+      "doppler_rect": {
+        "max_abs_err_grid_bins": 0.5,
+        "max_abs_err_parabolic_bins": 0.23390955645232303,
+        "max_abs_err_zeropad8_parabolic_bins": 0.00016211854372549794,
+        "worst_scalloping_loss_db": -3.9215254701274964,
+        "worst_scalloping_loss_closed_form_db": -3.9215254701275,
+        "max_abs_loss_dev_vs_closed_db": 2.0872192862952943e-14
+      },
+      "doppler_hann": {
+        "max_abs_err_grid_bins": 0.5,
+        "max_abs_err_parabolic_bins": 0.05274717281752572,
+        "max_abs_err_zeropad8_parabolic_bins": 8.488889220181761e-05,
+        "worst_scalloping_loss_db": -1.4236221776930624,
+        "worst_scalloping_loss_closed_form_db": -1.4236221776930613,
+        "max_abs_loss_dev_vs_closed_db": 6.106226635438361e-15
+      },
+      "range": {
+        "max_abs_err_grid_bins": 0.5,
+        "max_abs_err_grid_m": 7.49481145,
+        "max_abs_err_parabolic_bins": 0.03200489922853644,
+        "max_abs_err_parabolic_m": 0.4797413703882622,
+        "rms_err_grid_m": 4.276706198553355,
+        "uniform_quantisation_rms_m": 4.32713140818299,
+        "worst_straddle_loss_db": -0.9120082855560157,
+        "worst_straddle_loss_closed_db": -0.9463412922004235,
+        "max_abs_straddle_dev_vs_closed_db": 0.08508082672884607
+      }
+    },
+    "estimation_monte_carlo": {
+      "snr_per_sample_db": [
+        -30.0,
+        -25.0,
+        -20.0,
+        -15.0,
+        -10.0
+      ],
+      "post_processing_snr_db_on_grid": [
+        8.061799739838868,
+        13.061799739838868,
+        18.061799739838868,
+        23.061799739838868,
+        28.061799739838868
+      ],
+      "rms": {
+        "r_grid": [
+          17.71201649881289,
+          6.051568051256389,
+          4.722400960252289,
+          4.2435979166127025,
+          4.657553841089155
+        ],
+        "r_interp": [
+          19.009747521025673,
+          4.391125631787767,
+          1.7797252308279126,
+          1.1412052943770141,
+          0.7067182241446449
+        ],
+        "v_grid": [
+          9.44181618071225,
+          3.589506798662185,
+          2.173191618427762,
+          2.3593002003792933,
+          2.294298129262304
+        ],
+        "v_interp": [
+          9.37052800586635,
+          3.305676272793051,
+          1.4655691309698644,
+          1.3477602682102543,
+          1.3173009551132444
+        ]
+      },
+      "quantisation_rms_range_m": 4.32713140818299,
+      "quantisation_rms_velocity_mps": 2.2537142750953074,
+      "n_trials_per_snr": 150
+    }
+  },
+  "elapsed_s": 6.9769952340000145,
+  "timestamp_utc": "2026-10-03T06:59:59Z",
+  "environment": {
+    "python": "3.13.16",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "platform": "Linux-6.18.44-fc-v64-x86_64-with-glibc2.39"
+  }
+}
