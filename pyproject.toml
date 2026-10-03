@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "array-signal-lab"
+version = "0.1.0"
+description = "Narrowband array processing, adaptive beamforming, pulse-Doppler processing and CFAR detection with analytical and Monte Carlo verification"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "Aaron Curtis"}]
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "scipy>=1.10", "matplotlib>=3.7"]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = ["slow: Monte Carlo tests that take more than a few seconds"]
