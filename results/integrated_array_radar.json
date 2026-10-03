@@ -112,8 +112,8 @@
     },
     "expected_post_processing_snr_db_target1_noise_only": 23.342086975841312
   },
-  "elapsed_s": 0.10078869200015106,
-  "timestamp_utc": "2026-10-03T07:13:29Z",
+  "elapsed_s": 0.09818069799985096,
+  "timestamp_utc": "2026-10-03T07:32:05Z",
   "environment": {
     "python": "3.13.16",
     "numpy": "2.5.3",

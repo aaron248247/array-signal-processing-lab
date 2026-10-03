@@ -121,8 +121,8 @@
     "grating_lobe_d1_theta20_abs_response": 1.0,
     "psl_large_N_limit_db": -13.261458884048285
   },
-  "elapsed_s": 0.7894036380000671,
-  "timestamp_utc": "2026-10-03T07:11:39Z",
+  "elapsed_s": 0.7079497330000777,
+  "timestamp_utc": "2026-10-03T07:30:20Z",
   "environment": {
     "python": "3.13.16",
     "numpy": "2.5.3",

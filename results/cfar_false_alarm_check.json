@@ -485,8 +485,8 @@
     "iid_chi2_dof": 11,
     "iid_chi2_p_value": 0.014353758249719012
   },
-  "elapsed_s": 25.59150759199997,
-  "timestamp_utc": "2026-10-03T07:13:13Z",
+  "elapsed_s": 24.550643877999846,
+  "timestamp_utc": "2026-10-03T07:31:50Z",
   "environment": {
     "python": "3.13.16",
     "numpy": "2.5.3",

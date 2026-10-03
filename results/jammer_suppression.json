@@ -142,8 +142,8 @@
       }
     }
   },
-  "elapsed_s": 2.52265367699988,
-  "timestamp_utc": "2026-10-03T07:11:45Z",
+  "elapsed_s": 2.431581556999845,
+  "timestamp_utc": "2026-10-03T07:30:26Z",
   "environment": {
     "python": "3.13.16",
     "numpy": "2.5.3",

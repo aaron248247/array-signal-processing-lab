@@ -124,8 +124,8 @@
     "mpdr_snr10_delta1_response_toward_true_target_db": -21.073582655587195,
     "mpdr_snr10_delta1_mainlobe_peak_deg": -3.899999999999998
   },
-  "elapsed_s": 14.088136548999955,
-  "timestamp_utc": "2026-10-03T07:12:31Z",
+  "elapsed_s": 13.46966863500029,
+  "timestamp_utc": "2026-10-03T07:31:10Z",
   "environment": {
     "python": "3.13.16",
     "numpy": "2.5.3",

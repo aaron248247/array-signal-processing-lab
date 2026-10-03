@@ -6,7 +6,7 @@ training cells (8 per side, 2 guard cells per side), P_FA = 1e-4.
 Theory curves
 -------------
 * ideal known-noise detector, non-fluctuating target (Swerling 0):
-  Marcum Q, ``Q1(sqrt(2 SNR), sqrt(-2 ln P_FA))`` [Richards 2014, ch. 6].
+  Marcum Q, ``Q1(sqrt(2 SNR), sqrt(-2 ln P_FA))`` [Richards 2014].
 * ideal detector, Swerling 1: ``P_FA^(1/(1+SNR))``.
 * CA-CFAR, Swerling 1: ``(1 + alpha / (N_t (1 + SNR)))^(-N_t)`` [Finn & Johnson 1968].
 * CA-CFAR, Swerling 0: quadrature over the Gamma-distributed noise estimate.
