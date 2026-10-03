@@ -1,0 +1,496 @@
+{
+  "experiment": "cfar_false_alarm_check",
+  "config": {
+    "pfa_list": [
+      0.01,
+      0.001,
+      0.0001,
+      1e-05
+    ],
+    "iid_seq_len": 10000,
+    "iid_n_seq_CA": 2000,
+    "iid_n_seq_OS": 400,
+    "iid_window_per_side": {
+      "CA16": [
+        8,
+        2
+      ],
+      "CA32": [
+        16,
+        2
+      ],
+      "OS16": [
+        8,
+        2,
+        12
+      ]
+    },
+    "pipeline_maps_per_case": 60,
+    "seed": 20261008
+  },
+  "metrics": {
+    "threshold_example": {
+      "pfa": 0.0001,
+      "doppler_bin_index": 45,
+      "target_lags": [
+        288,
+        297,
+        601
+      ],
+      "targets": [
+        {
+          "range_m": 4321.7,
+          "velocity_mps": 101.3,
+          "snr_db": -15.0,
+          "phase_rad": 0.3
+        },
+        {
+          "range_m": 4456.6066061,
+          "velocity_mps": 101.3,
+          "snr_db": -10.0,
+          "phase_rad": 1.0
+        },
+        {
+          "range_m": 9007.4,
+          "velocity_mps": 101.3,
+          "snr_db": -20.0,
+          "phase_rad": 2.0
+        }
+      ],
+      "ca_detected_targets": [
+        false,
+        true,
+        true
+      ],
+      "os_detected_targets": [
+        true,
+        true,
+        true
+      ],
+      "ca_n_detections": 6,
+      "os_n_detections": 6,
+      "ca_threshold_over_noise_db_at_weak_target": 27.613939180132164,
+      "os_threshold_over_noise_db_at_weak_target": 19.54665231873176,
+      "weak_target_cell_power_over_noise_db": 22.02725126903062
+    },
+    "iid": [
+      {
+        "detector": "CA-CFAR N_t=16",
+        "pfa_requested": 0.01,
+        "pfa_measured": 0.009966432865731463,
+        "stderr": 2.217235182923747e-05,
+        "ci95": [
+          0.009922975056146158,
+          0.010009890675316768
+        ],
+        "z_score": -1.5139185291239192,
+        "ratio_measured_to_requested": 0.9966432865731463,
+        "n_cells": 19960000,
+        "n_false_alarms": 198930,
+        "binomial_stderr_if_independent": 2.227087748536047e-05
+      },
+      {
+        "detector": "CA-CFAR N_t=16",
+        "pfa_requested": 0.001,
+        "pfa_measured": 0.001015931863727455,
+        "stderr": 7.098226856200216e-06,
+        "ci95": [
+          0.0010020193390893027,
+          0.0010298443883656075
+        ],
+        "z_score": 2.2444850031157824,
+        "ratio_measured_to_requested": 1.015931863727455,
+        "n_cells": 19960000,
+        "n_false_alarms": 20278,
+        "binomial_stderr_if_independent": 7.0746095440243775e-06
+      },
+      {
+        "detector": "CA-CFAR N_t=16",
+        "pfa_requested": 0.0001,
+        "pfa_measured": 9.579158316633267e-05,
+        "stderr": 2.232198987350273e-06,
+        "ci95": [
+          9.141647315112613e-05,
+          0.0001001666931815392
+        ],
+        "z_score": -1.8853233325147822,
+        "ratio_measured_to_requested": 0.9579158316633266,
+        "n_cells": 19960000,
+        "n_false_alarms": 1912,
+        "binomial_stderr_if_independent": 2.238195487010943e-06
+      },
+      {
+        "detector": "CA-CFAR N_t=16",
+        "pfa_requested": 1e-05,
+        "pfa_measured": 9.218436873747494e-06,
+        "stderr": 6.890673510120623e-07,
+        "ci95": [
+          7.867864865763852e-06,
+          1.0569008881731135e-05
+        ],
+        "z_score": -1.134233286636774,
+        "ratio_measured_to_requested": 0.9218436873747493,
+        "n_cells": 19960000,
+        "n_false_alarms": 184,
+        "binomial_stderr_if_independent": 7.078114113151723e-07
+      },
+      {
+        "detector": "CA-CFAR N_t=32",
+        "pfa_requested": 0.01,
+        "pfa_measured": 0.010007928542753912,
+        "stderr": 2.0597327408499553e-05,
+        "ci95": [
+          0.009967557781033254,
+          0.01004829930447457
+        ],
+        "z_score": 0.38493065613164534,
+        "ratio_measured_to_requested": 1.0007928542753912,
+        "n_cells": 19928000,
+        "n_false_alarms": 199438,
+        "binomial_stderr_if_independent": 2.2288751386700903e-05
+      },
+      {
+        "detector": "CA-CFAR N_t=32",
+        "pfa_requested": 0.001,
+        "pfa_measured": 0.0010207246085909274,
+        "stderr": 7.135711413547209e-06,
+        "ci95": [
+          0.001006738614220375,
+          0.0010347106029614799
+        ],
+        "z_score": 2.9043507213004087,
+        "ratio_measured_to_requested": 1.0207246085909274,
+        "n_cells": 19928000,
+        "n_false_alarms": 20341,
+        "binomial_stderr_if_independent": 7.080287401715215e-06,
+        "replication": {
+          "seed": 20261009,
+          "pfa_measured": 0.0010048173424327578,
+          "stderr": 7.169675148865271e-06,
+          "z_score": 0.6719052582905661
+        }
+      },
+      {
+        "detector": "CA-CFAR N_t=32",
+        "pfa_requested": 0.0001,
+        "pfa_measured": 0.00010121437173825774,
+        "stderr": 2.307171000987484e-06,
+        "ci95": [
+          9.669231657632227e-05,
+          0.0001057364269001932
+        ],
+        "z_score": 0.5263466547290931,
+        "ratio_measured_to_requested": 1.0121437173825774,
+        "n_cells": 19928000,
+        "n_false_alarms": 2017,
+        "binomial_stderr_if_independent": 2.2399917918642986e-06
+      },
+      {
+        "detector": "CA-CFAR N_t=32",
+        "pfa_requested": 1e-05,
+        "pfa_measured": 9.885588117222e-06,
+        "stderr": 7.091208567102366e-07,
+        "ci95": [
+          8.495711238069937e-06,
+          1.1275464996374064e-05
+        ],
+        "z_score": -0.1613432769539196,
+        "ratio_measured_to_requested": 0.9885588117222,
+        "n_cells": 19928000,
+        "n_false_alarms": 197,
+        "binomial_stderr_if_independent": 7.083794783498814e-07
+      },
+      {
+        "detector": "OS-CFAR N_t=16, k=12",
+        "pfa_requested": 0.01,
+        "pfa_measured": 0.010019288577154308,
+        "stderr": 5.242026226736622e-05,
+        "ci95": [
+          0.00991654486311027,
+          0.010122032291198346
+        ],
+        "z_score": 0.3679603328943264,
+        "ratio_measured_to_requested": 1.0019288577154308,
+        "n_cells": 3992000,
+        "n_false_alarms": 39997,
+        "binomial_stderr_if_independent": 4.9799195975835585e-05
+      },
+      {
+        "detector": "OS-CFAR N_t=16, k=12",
+        "pfa_requested": 0.001,
+        "pfa_measured": 0.0009969939879759518,
+        "stderr": 1.600701014715245e-05,
+        "ci95": [
+          0.000965620248087533,
+          0.0010283677278643706
+        ],
+        "z_score": -0.1877934727606215,
+        "ratio_measured_to_requested": 0.9969939879759517,
+        "n_cells": 3992000,
+        "n_false_alarms": 3980,
+        "binomial_stderr_if_independent": 1.5819307854707298e-05
+      },
+      {
+        "detector": "OS-CFAR N_t=16, k=12",
+        "pfa_requested": 0.0001,
+        "pfa_measured": 0.00010821643286573145,
+        "stderr": 5.293557343269151e-06,
+        "ci95": [
+          9.784106047292392e-05,
+          0.00011859180525853898
+        ],
+        "z_score": 1.5521571474386284,
+        "ratio_measured_to_requested": 1.0821643286573144,
+        "n_cells": 3992000,
+        "n_false_alarms": 432,
+        "binomial_stderr_if_independent": 5.004757255889716e-06
+      }
+    ],
+    "pipeline": [
+      {
+        "case": "iid exponential (control)",
+        "pfa_requested": 0.001,
+        "pfa_measured": 0.000976858428030303,
+        "stderr": 1.953485947167347e-05,
+        "z_score": -1.1846295594423644,
+        "ratio_measured_to_requested": 0.976858428030303,
+        "n_train_cells": 132,
+        "n_eff": 132.0,
+        "pfa_predicted_neff": 0.0009999999999999937,
+        "rho_range_lag1_abs": 0.0,
+        "rho_doppler_lag1_abs": 0.0,
+        "n_maps": 60
+      },
+      {
+        "case": "iid exponential (control)",
+        "pfa_requested": 0.0001,
+        "pfa_measured": 9.706439393939393e-05,
+        "stderr": 6.308950154110416e-06,
+        "z_score": -0.4653081715495037,
+        "ratio_measured_to_requested": 0.9706439393939392,
+        "n_train_cells": 132,
+        "n_eff": 132.0,
+        "pfa_predicted_neff": 9.999999999999883e-05,
+        "rho_range_lag1_abs": 0.0,
+        "rho_doppler_lag1_abs": 0.0,
+        "n_maps": 60
+      },
+      {
+        "case": "MF f_s = 2B, rect Doppler",
+        "pfa_requested": 0.001,
+        "pfa_measured": 0.001121271306818182,
+        "stderr": 1.9237791093353926e-05,
+        "z_score": 6.303806202577882,
+        "ratio_measured_to_requested": 1.121271306818182,
+        "n_train_cells": 132,
+        "n_eff": 70.9995950146656,
+        "pfa_predicted_neff": 0.0011598415707884634,
+        "rho_range_lag1_abs": 0.636567411628716,
+        "rho_doppler_lag1_abs": 1.7574780101670243e-17,
+        "n_maps": 60
+      },
+      {
+        "case": "MF f_s = 2B, rect Doppler",
+        "pfa_requested": 0.0001,
+        "pfa_measured": 0.00011866714015151516,
+        "stderr": 6.09389646377178e-06,
+        "z_score": 3.063251937818655,
+        "ratio_measured_to_requested": 1.1866714015151516,
+        "n_train_cells": 132,
+        "n_eff": 70.9995950146656,
+        "pfa_predicted_neff": 0.00012965728499301712,
+        "rho_range_lag1_abs": 0.636567411628716,
+        "rho_doppler_lag1_abs": 1.7574780101670243e-17,
+        "n_maps": 60
+      },
+      {
+        "case": "MF f_s = 2B, Hann Doppler",
+        "pfa_requested": 0.001,
+        "pfa_measured": 0.0013272372159090907,
+        "stderr": 2.386516745546262e-05,
+        "z_score": 13.711917861870596,
+        "ratio_measured_to_requested": 1.3272372159090906,
+        "n_train_cells": 132,
+        "n_eff": 40.624027325152994,
+        "pfa_predicted_neff": 0.0014496137293128584,
+        "rho_range_lag1_abs": 0.636567411628716,
+        "rho_doppler_lag1_abs": 0.6666666666666669,
+        "n_maps": 60
+      },
+      {
+        "case": "MF f_s = 2B, Hann Doppler",
+        "pfa_requested": 0.0001,
+        "pfa_measured": 0.00014500473484848483,
+        "stderr": 7.539794074267159e-06,
+        "z_score": 5.968960744177768,
+        "ratio_measured_to_requested": 1.4500473484848482,
+        "n_train_cells": 132,
+        "n_eff": 40.624027325152994,
+        "pfa_predicted_neff": 0.00018998179942512374,
+        "rho_range_lag1_abs": 0.636567411628716,
+        "rho_doppler_lag1_abs": 0.6666666666666669,
+        "n_maps": 60
+      },
+      {
+        "case": "MF f_s = B, rect Doppler",
+        "pfa_requested": 0.001,
+        "pfa_measured": 0.0009599079457364341,
+        "stderr": 2.2807210701111544e-05,
+        "z_score": -1.7578674915127588,
+        "ratio_measured_to_requested": 0.9599079457364341,
+        "n_train_cells": 132,
+        "n_eff": 128.6114202645434,
+        "pfa_predicted_neff": 0.0010046869540635444,
+        "rho_range_lag1_abs": 0.02000000000000014,
+        "rho_doppler_lag1_abs": 1.7574780101670243e-17,
+        "n_maps": 60
+      },
+      {
+        "case": "MF f_s = B, rect Doppler",
+        "pfa_requested": 0.0001,
+        "pfa_measured": 9.811046511627906e-05,
+        "stderr": 8.988333243588858e-06,
+        "z_score": -0.21022083099430003,
+        "ratio_measured_to_requested": 0.9811046511627906,
+        "n_train_cells": 132,
+        "n_eff": 128.6114202645434,
+        "pfa_predicted_neff": 0.00010082970152002559,
+        "rho_range_lag1_abs": 0.02000000000000014,
+        "rho_doppler_lag1_abs": 1.7574780101670243e-17,
+        "n_maps": 60
+      },
+      {
+        "case": "MF f_s = B, Hann Doppler",
+        "pfa_requested": 0.001,
+        "pfa_measured": 0.001081031976744186,
+        "stderr": 2.456057439232546e-05,
+        "z_score": 3.2992704262448527,
+        "ratio_measured_to_requested": 1.081031976744186,
+        "n_train_cells": 132,
+        "n_eff": 73.59460507737587,
+        "pfa_predicted_neff": 0.0011471328017060324,
+        "rho_range_lag1_abs": 0.02000000000000014,
+        "rho_doppler_lag1_abs": 0.6666666666666669,
+        "n_maps": 60
+      },
+      {
+        "case": "MF f_s = B, Hann Doppler",
+        "pfa_requested": 0.0001,
+        "pfa_measured": 0.00012839147286821702,
+        "stderr": 8.260310327355093e-06,
+        "z_score": 3.437095186871485,
+        "ratio_measured_to_requested": 1.2839147286821702,
+        "n_train_cells": 132,
+        "n_eff": 73.59460507737587,
+        "pfa_predicted_neff": 0.00012719960211670942,
+        "rho_range_lag1_abs": 0.02000000000000014,
+        "rho_doppler_lag1_abs": 0.6666666666666669,
+        "n_maps": 60
+      }
+    ],
+    "pipeline_partial_overlap_edge": [
+      {
+        "case": "MF f_s = 2B, rect Doppler",
+        "pfa_requested": 0.001,
+        "pfa_measured_partial_overlap_lags": 0.0010520833333333333,
+        "stderr": 8.66123084364632e-05,
+        "lags": [
+          900,
+          999
+        ]
+      },
+      {
+        "case": "MF f_s = 2B, rect Doppler",
+        "pfa_requested": 0.0001,
+        "pfa_measured_partial_overlap_lags": 0.00018489583333333333,
+        "stderr": 3.140227436281839e-05,
+        "lags": [
+          900,
+          999
+        ]
+      },
+      {
+        "case": "MF f_s = 2B, Hann Doppler",
+        "pfa_requested": 0.001,
+        "pfa_measured_partial_overlap_lags": 0.0012187500000000002,
+        "stderr": 7.582235128774536e-05,
+        "lags": [
+          900,
+          999
+        ]
+      },
+      {
+        "case": "MF f_s = 2B, Hann Doppler",
+        "pfa_requested": 0.0001,
+        "pfa_measured_partial_overlap_lags": 0.00011458333333333334,
+        "stderr": 1.8888767724215356e-05,
+        "lags": [
+          900,
+          999
+        ]
+      },
+      {
+        "case": "MF f_s = B, rect Doppler",
+        "pfa_requested": 0.001,
+        "pfa_measured_partial_overlap_lags": 0.0009635416666666667,
+        "stderr": 8.112756511110679e-05,
+        "lags": [
+          450,
+          499
+        ]
+      },
+      {
+        "case": "MF f_s = B, rect Doppler",
+        "pfa_requested": 0.0001,
+        "pfa_measured_partial_overlap_lags": 7.291666666666667e-05,
+        "stderr": 2.0160388549786008e-05,
+        "lags": [
+          450,
+          499
+        ]
+      },
+      {
+        "case": "MF f_s = B, Hann Doppler",
+        "pfa_requested": 0.001,
+        "pfa_measured_partial_overlap_lags": 0.001,
+        "stderr": 8.623991794017248e-05,
+        "lags": [
+          450,
+          499
+        ]
+      },
+      {
+        "case": "MF f_s = B, Hann Doppler",
+        "pfa_requested": 0.0001,
+        "pfa_measured_partial_overlap_lags": 8.854166666666667e-05,
+        "stderr": 2.239675714163534e-05,
+        "lags": [
+          450,
+          499
+        ]
+      }
+    ],
+    "pipeline_window": {
+      "train_doppler_range_per_side": [
+        2,
+        8
+      ],
+      "guard_doppler_range_per_side": [
+        1,
+        2
+      ]
+    },
+    "max_abs_z_iid": 2.9043507213004087,
+    "iid_chi2_sum_z2": 23.636941640326786,
+    "iid_chi2_dof": 11,
+    "iid_chi2_p_value": 0.014353758249719012
+  },
+  "elapsed_s": 26.646813837999844,
+  "timestamp_utc": "2026-10-03T07:05:47Z",
+  "environment": {
+    "python": "3.13.16",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "platform": "Linux-6.18.44-fc-v64-x86_64-with-glibc2.39"
+  }
+}
