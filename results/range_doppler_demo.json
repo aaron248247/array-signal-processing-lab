@@ -328,8 +328,8 @@
       "n_trials_per_snr": 150
     }
   },
-  "elapsed_s": 6.9769952340000145,
-  "timestamp_utc": "2026-10-03T06:59:59Z",
+  "elapsed_s": 7.290337250999983,
+  "timestamp_utc": "2026-10-03T07:12:46Z",
   "environment": {
     "python": "3.13.16",
     "numpy": "2.5.3",

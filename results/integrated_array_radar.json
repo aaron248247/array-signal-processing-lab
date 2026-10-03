@@ -1,0 +1,123 @@
+{
+  "experiment": "integrated_array_radar",
+  "config": {
+    "N": 16,
+    "targets": [
+      {
+        "range_m": 4321.7,
+        "velocity_mps": 101.3,
+        "snr_db": -25.0,
+        "phase_rad": 0.3
+      },
+      {
+        "range_m": 7500.0,
+        "velocity_mps": -60.0,
+        "snr_db": -30.0,
+        "phase_rad": 1.7
+      }
+    ],
+    "target_angles_deg": [
+      0.0,
+      2.0
+    ],
+    "jammer_deg": 35.0,
+    "jnr_db": 40.0,
+    "pfa": 0.0001,
+    "train": [
+      2,
+      8
+    ],
+    "guard": [
+      1,
+      2
+    ],
+    "K_train": 320,
+    "radar": {
+      "carrier_hz": 3000000000.0,
+      "bandwidth_hz": 5000000.0,
+      "pulse_s": 1e-05,
+      "fs_hz": 10000000.0,
+      "prf_hz": 10000.0,
+      "n_pulses": 64,
+      "c": 299792458.0
+    },
+    "seed": 20261010
+  },
+  "metrics": {
+    "processing": {
+      "conventional": {
+        "array_output_sinr_db_per_unit_snr_target1": -17.695664422864304,
+        "array_output_sinr_db_per_unit_snr_target2": -18.835088787429846,
+        "optimal_db_per_unit_snr": [
+          12.01560421418402,
+          12.02050177962551
+        ],
+        "beam_output_interference_plus_noise_power_db": 17.695664422864304,
+        "measured_rd_floor_db": 17.37837831221213,
+        "jammer_response_db": -22.3089522457228,
+        "targets": [
+          {
+            "range_m": 4321.7,
+            "velocity_mps": 101.3,
+            "detected": false,
+            "peak_over_floor_db": 7.4282275934331405
+          },
+          {
+            "range_m": 7500.0,
+            "velocity_mps": -60.0,
+            "detected": false,
+            "peak_over_floor_db": 9.497325387297733
+          }
+        ],
+        "false_alarms": 10,
+        "false_alarm_clusters_8connected": 7,
+        "cells_tested": 56250,
+        "pfa_inflation_factor_from_cfar_false_alarm_check": 1.4500473484848482,
+        "expected_false_alarms_with_measured_inflation": 8.156516335227272,
+        "expected_false_alarms_nominal": 5.625,
+        "n_train_cells": 132
+      },
+      "mvdr": {
+        "array_output_sinr_db_per_unit_snr_target1": 11.869826042087489,
+        "array_output_sinr_db_per_unit_snr_target2": 10.661252533639704,
+        "optimal_db_per_unit_snr": [
+          12.01560421418402,
+          12.02050177962551
+        ],
+        "beam_output_interference_plus_noise_power_db": -11.869826042087489,
+        "measured_rd_floor_db": -12.143699757747568,
+        "jammer_response_db": -75.64259235931374,
+        "targets": [
+          {
+            "range_m": 4321.7,
+            "velocity_mps": 101.3,
+            "detected": true,
+            "peak_over_floor_db": 23.457815161592002
+          },
+          {
+            "range_m": 7500.0,
+            "velocity_mps": -60.0,
+            "detected": true,
+            "peak_over_floor_db": 16.76694326698065
+          }
+        ],
+        "false_alarms": 14,
+        "false_alarm_clusters_8connected": 12,
+        "cells_tested": 56250,
+        "pfa_inflation_factor_from_cfar_false_alarm_check": 1.4500473484848482,
+        "expected_false_alarms_with_measured_inflation": 8.156516335227272,
+        "expected_false_alarms_nominal": 5.625,
+        "n_train_cells": 132
+      }
+    },
+    "expected_post_processing_snr_db_target1_noise_only": 23.342086975841312
+  },
+  "elapsed_s": 0.10078869200015106,
+  "timestamp_utc": "2026-10-03T07:13:29Z",
+  "environment": {
+    "python": "3.13.16",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "platform": "Linux-6.18.44-fc-v64-x86_64-with-glibc2.39"
+  }
+}
